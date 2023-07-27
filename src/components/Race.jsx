@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useDispatch } from "react-redux"
-import { storeRaceData } from "../characterSlice"
+import { storeRaceData, completeStep } from "../characterSlice"
 
 
 export default function Race(){
@@ -88,7 +88,8 @@ export default function Race(){
                     <button onClick={()=>navigate("/races")}>Back</button>
                     <button onClick={()=> { 
                         selectRace()
-                        navigate('/')
+                        completeStep('race')
+                        navigate('/')                        
                     }}>
                             Confirm
                     </button>

@@ -1,5 +1,7 @@
-import { useSelector } from "react-redux"
-import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import { reset } from "../characterSlice"
+
 
 
 // make a paperdoll here 
@@ -8,16 +10,31 @@ import { Link } from "react-router-dom"
 
 
 export default function Home() {
+    const navigate = useNavigate()
     // importing the user selected options from redux to display
-    const {classData, raceData} = useSelector(state => state.char)
+    const {step, classData, raceData} = useSelector(state => state.char)
 
+    // enabling the reset button
+    let dispatch = useDispatch()
+    
+    // this function directs the user to the next step in character creation
+    // step = {race: false, class: false, abilityScore: false, alignment: false, background: false}
+    function journey(){
+        switch(step){
+            case (step.race): useNavigate('/classes')
+            
+            case (step.class): return 'Next step - choose ability scores';
+            case (step.abilityScore): return 'Next step - choose alignment';
+            case (step.alignment): return 'Next step - choose background';
+            case (step.race && step.class && step.abilityScore && step.alignment): return 'All done!!';
+            default: return null
+        }
+    }        
 
     return (
         <div>
             <h1>D&D API WEBSITE</h1>
-            <Link to="/classes">
-                <div>Begin your journey</div>                
-            </Link>
+            {step.race ? <button onClick={()=>journey()}>next step</button> : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
@@ -25,6 +42,8 @@ export default function Home() {
             <div>
                 {classData.name}
             </div>
+            <button onClick={(()=>{dispatch(reset())})}>reset</button>
+            
             
         </div>
     )

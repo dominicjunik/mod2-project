@@ -2,7 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {    
     classData: storedCharacter(),
-    raceData: storedRace(),    
+    raceData: storedRace(),
+    // step = [false, false, false, false, false]
+    // step = {race: false, class: false, abilityScore: false, alignment: false, background: false}
+    step: storedStep()   
+}
+
+// keeps track of the character creation process step
+function storedStep(){
+    let storedStep = localStorage.getItem('step')
+    let storedStepParsed = JSON.parse(storedStep)
+    if (storedStepParsed) {
+        return storedStepParsed
+    } else {return {race: false, class: false, abilityScore: false, alignment: false, background: false} }
 }
 
 // local storage for class data
@@ -26,6 +38,7 @@ function storedRace(){
 
 }
 
+
 const characterSlice = createSlice({
     name: 'characterSlice',
     initialState,
@@ -37,6 +50,19 @@ const characterSlice = createSlice({
         },
         storeRaceData: (state, action) => {
             state.raceData = action.payload
+        },
+        completeStep: (state, action) => {
+            // example action.payload => "character"
+            let section = action.payload
+            state.step[section] = true
+            console.log(state.step[section])
+        },
+        reset: (state) => {
+            localStorage.clear()
+            state = initialState
+            // this reloads the page
+            window.location.reload(false)
+            
         }
 
     }
@@ -45,4 +71,4 @@ const characterSlice = createSlice({
 
 export default characterSlice.reducer
 
-export const { storeClassData, storeRaceData} = characterSlice.actions
+export const { reset, completeStep, storeClassData, storeRaceData} = characterSlice.actions
