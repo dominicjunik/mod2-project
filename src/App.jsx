@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Classes from './pages/Classes';
+import Class from './components/Class';
 
 function App() {
  useEffect(()=>{
@@ -61,6 +62,7 @@ async function testApi2(){
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/classes" element={<Classes/>}/>
+          <Route path="/classes/:symbol" element={<Class />} />
         </Routes>       
       </div>
      
