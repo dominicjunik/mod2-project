@@ -6,8 +6,15 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Classes from './pages/Classes';
 import Class from './components/Class';
+import Races from './pages/Races';
+import Race from './components/Race';
+import Backgrounds from './pages/Backgrounds';
+import Alignment from './pages/Alignment';
+import AbilityScores from './pages/AbilityScores';
+
 
 function App() {
+
  useEffect(()=>{
   // testApi()
   testApi2()
@@ -56,6 +63,7 @@ async function testApi2(){
 ////////////
 // store the character object in a state    //
 ////////////
+
   return (    
       <div>
         <Nav />
@@ -63,6 +71,11 @@ async function testApi2(){
           <Route path="/" element={<Home />}/>
           <Route path="/classes" element={<Classes/>}/>
           <Route path="/classes/:symbol" element={<Class />} />
+          <Route path="/races" element={<Races/>}/>
+          <Route path="/races/:symbol" element={<Race/>}/>
+          <Route path="/backgrounds" element={<Backgrounds/>}/>
+          <Route path="/alignment" element={<Alignment />}/>
+          <Route path="/ability-scores" element={<AbilityScores/>}/>
         </Routes>       
       </div>
      

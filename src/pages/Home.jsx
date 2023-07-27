@@ -9,7 +9,7 @@ import { Link } from "react-router-dom"
 
 export default function Home() {
     // importing the user selected options from redux to display
-    const {classData} = useSelector(state => state.char)
+    const {classData, raceData} = useSelector(state => state.char)
 
 
     return (
@@ -18,9 +18,15 @@ export default function Home() {
             <Link to="/classes">
                 <div>Begin your journey</div>                
             </Link>
+            <h2>Your Character:</h2>
             <div>
-                Class name: {classData.name}
+                {raceData.name}
             </div>
+            <div>
+                {classData.name}
+            </div>
+            
         </div>
     )
 }
+

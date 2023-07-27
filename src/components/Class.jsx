@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useDispatch } from "react-redux"
 import { storeClassData } from "../characterSlice"
+import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 
 export default function Class(){
 
@@ -20,6 +21,8 @@ export default function Class(){
     const navigate = useNavigate()
 
 
+
+    // custom fetch hook to handle this functio across multiple pages
     // fetching api data function
     async function fetchIndividaul(){
 
@@ -43,9 +46,10 @@ export default function Class(){
         fetchIndividaul()      
     },[])
 
-    // saves the character data into the redux global state
-    function selectClass(){
+    // saves the character data into the redux global state and also into the local storage
+    function selectClass(){        
         dispatch(storeClassData(character))
+        localStorage.setItem('classData', JSON.stringify(character))
     }
 
 
@@ -60,7 +64,7 @@ export default function Class(){
                     <ul>
                         {character.proficiencies.map((thing)=> <li key={thing.index}>{thing.name}</li>)}
                     </ul>                    
-                </div>
+                </div>                
                 <div>
                     <button onClick={()=>navigate("/classes")}>Back</button>
                     <button onClick={()=> { 
@@ -84,3 +88,5 @@ export default function Class(){
     // when they confirm take them to the next step in character creation
     // back takes you to the class list page
 }
+
+

@@ -51,29 +51,7 @@ export default function Classes(){
   )
 }
 
-//this is for the second api
-function loaded2(){
-  return (
-    <div>
-        <h1>choose a class</h1>
-        <div className="classBox">
-        </div>
-          {classList.map( (character) => ( 
-            <Link key={character.name} to={`/classes/${character.name}`} state={{data: character.url}}>
-              <div > 
-                <h2>{character.name}</h2>
-                <p>{character.subtypes_name}</p>
-                <ul>
-                  {character.archetypes.map((type)=>(<li key={type.name}>{type.name}</li>))}
-                </ul>
-              </div>
-            </Link> 
-          ) )}
-          {/* {classList.map( (character) => ( <li key={character.name}> {character.name} </li> ) )} */}
-        
-    </div>
-)
-}
+
 function loading() {
     return (
         <h1>Loading...</h1>
@@ -85,3 +63,28 @@ function loading() {
      classList.length > 0 ? loaded() : loading()
   )
 }
+
+
+// //this is for the second api
+// function loaded2(){
+//   return (
+//     <div>
+//         <h1>choose a class</h1>
+//         <div className="classBox">
+//         </div>
+//           {classList.map( (character) => ( 
+//             <Link key={character.name} to={`/classes/${character.name}`} state={{data: character.url}}>
+//               <div > 
+//                 <h2>{character.name}</h2>
+//                 <p>{character.subtypes_name}</p>
+//                 <ul>
+//                   {character.archetypes.map((type)=>(<li key={type.name}>{type.name}</li>))}
+//                 </ul>
+//               </div>
+//             </Link> 
+//           ) )}
+//           {/* {classList.map( (character) => ( <li key={character.name}> {character.name} </li> ) )} */}
+        
+//     </div>
+// )
+// }
