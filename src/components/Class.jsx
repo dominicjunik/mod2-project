@@ -1,14 +1,26 @@
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
+import { useDispatch } from "react-redux"
+import { storeClassData } from "../characterSlice"
 
 export default function Class(){
-    
+
+    //this is used to save the data should the user press confirm on this page
+    const dispatch = useDispatch()    
+
+    // this gets state from the previous page that was linked here
     const location = useLocation()
     const { data } = location.state
+
+    // this is to save the data from the API 
     const [character, setCharacter] = useState()
+
+    // this is to enable the back button
     const navigate = useNavigate()
 
+
+    // fetching api data function
     async function fetchIndividaul(){
 
         const url = `https://www.dnd5eapi.co${data}`
@@ -25,10 +37,19 @@ export default function Class(){
         
     }
   
+
+    // on page load retrieve data from api
     useEffect(()=>{
         fetchIndividaul()      
     },[])
 
+    // saves the character data into the redux global state
+    function selectClass(){
+        dispatch(storeClassData(character))
+    }
+
+
+    // displays the data for the chosen character class
     function displayCharacter() {
         return(
             <div>
@@ -42,7 +63,12 @@ export default function Class(){
                 </div>
                 <div>
                     <button onClick={()=>navigate("/classes")}>Back</button>
-                    <button>Confirm</button>
+                    <button onClick={()=> { 
+                        selectClass()
+                        navigate('/')
+                    }}>
+                            Confirm
+                    </button>
                 </div>
             </div>
         )
