@@ -56,7 +56,8 @@ export default function AbilityScores(){
 
     function handleChange(event){
         let key = event.target.id
-        setStats({...stats, [key]: event.target.value})
+        let num = Number(event.target.value)
+        setStats({...stats, [key]: num})
     }
 
     function handleSubmit(event){
@@ -64,6 +65,7 @@ export default function AbilityScores(){
         console.log(stats)
         let sum = stats.cha + stats.con + stats.dex + stats.int + stats.str + stats.wis
         if(sum < 18 || sum > 108) {
+            alert('Your stats are crazy, fix them')
             return
         }
         navigate('/') 

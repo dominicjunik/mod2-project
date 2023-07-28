@@ -5,7 +5,8 @@ const initialState = {
     raceData: storedRace(),
     // step = [false, false, false, false, false]
     // step = {race: false, class: false, abilityScore: false, alignment: false, background: false}
-    step: storedStep()   
+    step: storedStep(),
+    stats: 'hi'   
 }
 
 // keeps track of the character creation process step
