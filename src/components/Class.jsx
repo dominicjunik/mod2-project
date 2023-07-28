@@ -52,19 +52,72 @@ export default function Class(){
         localStorage.setItem('classData', JSON.stringify(character))
     }
 
+    function renderSavingThrows(){
+        return (
+            character.saving_throws.map((save)=>(<div key={save.index}>{save.name}</div>))
+        )
+    }
+
+    // i tried conditionally rendering INSIDE this function because all classes have starting equipment but they might not all have options
+    function renderStartingEquipment(){   
+        return (
+            <div>
+            {character.starting_equipment.map((option)=> <div key={option.equipment.index}> {option.quantity} {option.equipment.name} </div> )}
+            A choice of:
+            {
+            character.starting_equipment_options.length > 0 ? character.starting_equipment_options.map((option)=><div key={option.desc}>-{option.desc}</div>) : null
+            }
+           
+            </div>
+        )
+    }
+
+    function renderProficiencies(){
+        return(character.proficiencies.map((prof)=> <li key={prof.index}>{prof.name}</li>))
+    }
+
+    // attempting to make this function more readable by saving stuff in variables first
+    function renderMagic(){
+        let spells = character.spellcasting.info
+        let type = character.spellcasting.spellcasting_ability
+         
+
+        return(
+            <div>
+                Spellcasting ({type.name}):
+                {spells.map((type)=>(<div>{type.name}: <br/> {type.desc.length > 1 ? type.desc.join(' ') : type.desc[0]}</div>))}
+            </div>
+        )
+    }
+        
 
     // displays the data for the chosen character class
     function displayCharacter() {
         return(
             <div>
-                <h1>{character.name}</h1>
-                <h2>Hit dice: {character.hit_die}</h2>
                 <div>
-                    <h2>Proficiencies:</h2>
-                    <ul>
-                        {character.proficiencies.map((thing)=> <li key={thing.index}>{thing.name}</li>)}
-                    </ul>                    
-                </div>                
+                    <h1>{character.name}</h1>
+                    <div>Hit dice: {character.hit_die}</div>
+                    <div>
+                        <div>Proficiencies:</div>
+                        <ul>
+                            {renderProficiencies()}
+                        </ul>                    
+                    </div> 
+                    <div>
+                        Saving Throws: <br />
+                        {renderSavingThrows()}
+                    </div>
+                    <div>
+                        Starting Equipment: <br/>
+                        {renderStartingEquipment()}
+                    </div>
+                    <div>
+                        {character.spellcasting ? renderMagic() : null}
+                    </div>
+
+                </div>
+                     
                 <div>
                     <button onClick={()=>navigate(-1)}>Back</button>                    
                     <button onClick={()=> { 
