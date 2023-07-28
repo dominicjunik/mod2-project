@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useDispatch } from "react-redux"
 import { storeRaceData, completeStep } from "../characterSlice"
@@ -62,9 +62,9 @@ export default function Race(){
     }
     
     function renderTraits(){
-        return ( race.traits.map( (trait)=> <div key={trait.index}>{trait.name}</div>))
+        return ( race.traits.map( (trait)=> <Link key={trait.index} to={`/traits/${trait.index}`} state={{data: trait.url}}><div key={trait.index}>{trait.name}</div> </Link>))
     }
-
+ // 
     
     // displays the data for the chosen character class
     function displayRace() {
@@ -85,7 +85,7 @@ export default function Race(){
                 
                 
                 <div>
-                    <button onClick={()=>navigate("/races")}>Back</button>
+                    <button onClick={()=>navigate(-1)}>Back</button>
                     <button onClick={()=> { 
                         selectRace()
                         completeStep('race')

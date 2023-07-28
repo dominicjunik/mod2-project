@@ -66,7 +66,7 @@ export default function Class(){
                     </ul>                    
                 </div>                
                 <div>
-                    <button onClick={()=>navigate("/classes")}>Back</button>
+                    <button onClick={()=>navigate(-1)}>Back</button>                    
                     <button onClick={()=> { 
                         selectClass()
                         navigate('/')
