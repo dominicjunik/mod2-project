@@ -85,7 +85,7 @@ export default function Class(){
         return(
             <div>
                 Spellcasting ({type.name}):
-                {spells.map((type)=>(<div>{type.name}: <br/> {type.desc.length > 1 ? type.desc.join(' ') : type.desc[0]}</div>))}
+                {spells.map((type)=>(<div key={type.name}>{type.name}: <br/> {type.desc.length > 1 ? type.desc.join(' ') : type.desc[0]}</div>))}
             </div>
         )
     }

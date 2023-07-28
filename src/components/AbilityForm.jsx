@@ -1,12 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AbilityForm from "../components/AbilityForm";
+export default function AbilityForm(){
 
-export default function AbilityScores(){    
-    //for navigation buttons
-    let navigate = useNavigate()
-    
-    
     const [stats, setStats] = useState({
         cha: 0,
         con: 0,
@@ -39,7 +33,14 @@ export default function AbilityScores(){
         let result = total - lowest
         console.log(result)
         return result
-    }   
+    }
+
+    function handleSubmit(event){
+        event.preventDefault()
+        let playerStats = {cha: cha, con: con, dex: dex, int: int, str: str, wis: wis}
+        console.log(playerStats)
+
+    }
     
     function rollStats(){
         let newStats = {
@@ -59,26 +60,10 @@ export default function AbilityScores(){
         setStats({...stats, [key]: event.target.value})
     }
 
-    function handleSubmit(event){
-        event.preventDefault()        
-        console.log(stats)
-        let sum = stats.cha + stats.con + stats.dex + stats.int + stats.str + stats.wis
-        if(sum < 18 || sum > 108) {
-            return
-        }
-        navigate('/') 
-
-    }
-    
 
     return (
         <div>
-            AbilityScores: 
-            <br />
-            enter scores manually or <button onClick={()=>rollStats()}>Roll!</button>  to randomly generate
-                      
-            <div>
-            <form onSubmit={handleSubmit}>            
+            <form onSubmit={handleSubmit}>
                 <div>
                     <br />
                     <label htmlFor='cha'>Charisma:</label>
@@ -144,20 +129,13 @@ export default function AbilityScores(){
                     placeholder="enter a value or roll"
                     required 
                     />                    
-                </div> 
-
-                
-                <br />
-                <button onClick={()=>navigate(-1)}>Back</button>                     
-                <button type="submit">
-                        Confirm
-                </button>               
-                
+                    <button type="submit">
+                        Lock Stats
+                    </button>
+                </div>                
+                <button onClick={()=>rollStats()}>Roll!</button>
             </form>           
 
         </div>
-        </div>            
-                                       
-       
     )
 }
