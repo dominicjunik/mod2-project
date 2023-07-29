@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { reset } from "../characterSlice"
+import { useEffect, useState } from "react"
 
 
 
@@ -10,6 +11,8 @@ import { reset } from "../characterSlice"
 
 
 export default function Home() {
+    const [displayStats, setDisplayStats] = useState()
+
     const navigate = useNavigate()
     // importing the user selected options from redux to display
     const {step, classData, raceData, statsData} = useSelector(state => state.char)
@@ -29,7 +32,48 @@ export default function Home() {
             case (step.race && step.class && step.abilityScore && step.alignment): return 'All done!!';
             default: return null
         }
-    }        
+    }
+    
+    ////////////////////////////////
+    // adding race bonus to stats //
+    ////////////////////////////////
+    // currently broken  //
+    ///////////////////////
+    
+    // this function adds the bonus from the raceData to the statsData to display on the screen
+    // when the 
+    useEffect(()=>{setDisplayStats(statsData)},[statsData])
+    function statsDisplay(){
+        let display = {...statsData}
+
+        // loop over each stat in the stats OBJECT
+        for (const stat in display){
+            // loop over each index in the bonus stats array
+            for (const element of raceData.ability_bonuses){
+                    // check if the bonus stat is the same as the current stat in the object loop
+                    if (stat === element.ability_score.index){
+                        console.log(display)
+                        let bonus = element.bonus
+                        let currentValue = display[stat]
+                        let total = currentValue + bonus
+                        console.log(stat + currentValue)
+                        console.log(stat + element.ability_score.index + bonus)
+                        console.log(total)
+                        display.stat = total
+                        console.log(display)
+                        // we've successfully compared the two PROPERTIES now we need to add their values together
+                    }
+            }
+        }
+
+        setDisplayStats(display)
+            
+        return (
+            <div>
+                CHA: {display.cha} CON: {display.con} DEX: {display.dex}  INT: {display.int} STR: {display.str}  WIS: {display.wis}              
+            </div>
+        )
+    }
 
     return (
         <div>
@@ -38,7 +82,7 @@ export default function Home() {
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
-            </div>            
+            </div>                       
             <div>
                 CHA: {statsData.cha} CON: {statsData.con} DEX: {statsData.dex}  INT: {statsData.int} STR: {statsData.str}  WIS: {statsData.wis}
             </div>
@@ -46,6 +90,7 @@ export default function Home() {
                 {classData.name}
             </div>
             <button onClick={(()=>{dispatch(reset())})}>reset</button>
+            <button onClick={()=>statsDisplay()}>test stat display</button>
             
             
         </div>
