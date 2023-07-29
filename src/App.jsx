@@ -12,6 +12,7 @@ import Backgrounds from './pages/Backgrounds';
 import Alignment from './pages/Alignment';
 import AbilityScores from './pages/AbilityScores';
 import Traits from './pages/Traits';
+import Ability from './components/Ability';
 
 function App() {
 
@@ -76,6 +77,7 @@ async function testApi2(){
           <Route path="/backgrounds" element={<Backgrounds/>}/>
           <Route path="/alignment" element={<Alignment />}/>
           <Route path="/ability-scores" element={<AbilityScores/>}/>
+          <Route path="/ability-scores/:symbol" element={<Ability/>}/>
           <Route path="/traits/:symbol" element={<Traits />} />
         </Routes>       
       </div>

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { storeStats } from "../characterSlice"
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { Link } from "react-router-dom"
 
 export default function AbilityScores(){    
     //for navigation buttons
@@ -12,12 +14,93 @@ export default function AbilityScores(){
     
 
     // a local state variable to modify the form
-    // fed the default from the global state of the same variable incase they change pages
+    // fed the default from the global state of the same variable in case they change pages
     const { statsData } = useSelector(state => state.char)
-
     const [stats, setStats] = useState(statsData)
+
+
+    //////////////////
+    // API SECTION ///
+    //////////////////
+
+    //state variable for the api call
+    const [statsList, setStatsList] = useState()
+
+    async function fetchAbilities(){
+
+        const url = 'https://www.dnd5eapi.co/api/ability-scores'
+       
+  
+  
+        try{
+          const response = await axios.get(url)
+          // console.log(response.data.results)
+          setStatsList(response.data.results)
+          
+        }
+        catch{
+          console.log(error)
+        }
+        
+    }
+    // use effect to get the data
+    useEffect(()=>{
+      fetchAbilities()      
+    },[])
+
+    // functions to map the data to the page
+    function loaded(){
+        return ( 
+            <div>
+                AbilityScores: 
+                <br />
+                enter scores manually or <button onClick={()=>rollStats()}>Roll!</button>  to randomly generate
+                      
+                <div>
+                    <form onSubmit={handleSubmit}>  
+
+                        {statsList.map( (stat)=> ( 
+                            <div key={stat.index}>
+                                <br />            
+                                <label htmlFor={stat.index}><Link to={`/ability-scores/${stat.index}`} state={{data: stat.url}}>{stat.name}:</Link></label>
+                                <input type="number"
+                                    id = {stat.index}
+                                    value={stats[stat.index]}
+                                    onChange={handleChange}
+                                    placeholder="enter a value or roll"
+                                    required 
+                                />                    
+                            </div>
+                            )) 
+                        }
+        
+                        <br />
+                        <button onClick={()=>navigate(-1)}>Back</button>                     
+                        <button type="submit">
+                                Confirm
+                        </button>               
+                    
+                    </form>           
+
+                </div>
+            </div>     
+        
+        )
+    }
     
     
+      function loading() {
+        return (
+            <h1>Loading...</h1>
+        )
+      }
+
+
+    
+    //////////////////
+    // FORM SECTION //
+    //////////////////
+
 
     // random number range that is inclusive for the min and the max value
     function randomNumberInclusive(min, max) {
@@ -52,9 +135,7 @@ export default function AbilityScores(){
             str: generateValue(),
             wis: generateValue()
         }
-        setStats(newStats)
-        
-        
+        setStats(newStats)       
     }
 
     function handleChange(event){
@@ -82,6 +163,10 @@ export default function AbilityScores(){
 
     // useEffect(()=>{localStorage.setItem('stats', JSON.stringify(stats))}, [stats])
     
+
+    return (
+        statsList ? loaded() : loading()
+     )
 
     return (
         <div>

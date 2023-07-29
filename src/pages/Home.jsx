@@ -40,7 +40,7 @@ export default function Home() {
                 {raceData.name}
             </div>            
             <div>
-                CHA: {statsData.cha} CON: {statsData.con} Dex: {statsData.dex}  INT: {statsData.int} STR: {statsData.str}  WIS: {statsData.wis}
+                CHA: {statsData.cha} CON: {statsData.con} DEX: {statsData.dex}  INT: {statsData.int} STR: {statsData.str}  WIS: {statsData.wis}
             </div>
             <div>
                 {classData.name}

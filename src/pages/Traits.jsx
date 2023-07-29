@@ -39,14 +39,18 @@ export default function Traits(){
     return (
         <div>
             <h1>{trait.name}</h1>
-            <p>{trait.desc}</p> 
+            <p>{trait.desc}</p>             
+            {trait.trait_specific ? subTraits() : null} 
             <button onClick={()=> navigate(-1)}>back</button>
-            {trait.subtrait_options ? subTraits() : null} 
         </div>
         )
  }
  function subTraits(){
-    return <div>hi</div>
+    return (
+        <div>
+            {trait.trait_specific.subtrait_options.from.options.map( (piece) => <div key={piece.item.index}>{piece.item.name}</div>)}
+        </div>
+    )
  }
 
     return trait ? displayTrait() : <div>loading...</div>

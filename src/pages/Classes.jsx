@@ -48,15 +48,15 @@ export default function Classes(){
             {/* {classList.map( (character) => ( <li key={character.name}> {character.name} </li> ) )} */}
           
       </div>
-  )
-}
+    )
+  }
 
 
-function loading() {
+  function loading() {
     return (
         <h1>Loading...</h1>
     )
-}
+  }
 
 
   return (
