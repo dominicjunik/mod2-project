@@ -1,12 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+///////////
+// notes //
+///////////
+// im pretty sure my stored data functions are a crutch for updating my redux state ---- need to figure out how to get this to update how i want it too
 const initialState = {    
     classData: storedCharacter(),
     raceData: storedRace(),
     // step = [false, false, false, false, false]
     // step = {race: false, class: false, abilityScore: false, alignment: false, background: false}
     step: storedStep(),
-    statsData: storedStats()   
+    statsData: storedStats(),
+    alignmentData: storedAlignment()   
 }
 
 function storedStats(){
@@ -35,6 +40,7 @@ function storedCharacter(){
     } else {return {}}
 
 }
+
 // local storage for race data
 function storedRace(){
     let storedRace = localStorage.getItem('raceData')
@@ -46,6 +52,17 @@ function storedRace(){
     } else {return {}}
 
 }
+
+// local storage for alignment data
+function storedAlignment(){
+    let storedAlign = localStorage.getItem('alignmentData')
+    let storedAlignParsed = JSON.parse(storedAlign)    
+    if (storedAlignParsed) {
+        return storedAlignParsed
+    } else {return {}}
+
+}
+
 
 const characterSlice = createSlice({
     name: 'characterSlice',
@@ -69,8 +86,11 @@ const characterSlice = createSlice({
             
         },
         storeStats: (state, action) => {
-            // state.stats = action.payload
-            state.stats = {...state.stats, ...action.payload}
+            state.stats = action.payload
+            // state.stats = {...state.stats, ...action.payload}
+        },
+        storeAlignment: (state, action) => {
+            state.alignmentData = action.payload
         },
         reset: (state) => {
             localStorage.clear()
@@ -78,12 +98,12 @@ const characterSlice = createSlice({
             // this reloads the page
             window.location.reload(false)
             
-        }
-
+        },
+        
     }
 })
 
 
 export default characterSlice.reducer
 
-export const { reset, completeStep, storeClassData, storeRaceData, storeStats} = characterSlice.actions
+export const { reset, completeStep, storeClassData, storeRaceData, storeStats, storeAlignment} = characterSlice.actions

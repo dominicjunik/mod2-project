@@ -15,7 +15,7 @@ export default function Home() {
 
     const navigate = useNavigate()
     // importing the user selected options from redux to display
-    const {step, classData, raceData, statsData} = useSelector(state => state.char)
+    const {step, classData, raceData, statsData, alignmentData} = useSelector(state => state.char)
 
     // enabling the reset button
     let dispatch = useDispatch()
@@ -41,8 +41,9 @@ export default function Home() {
     ///////////////////////
     
     // this function adds the bonus from the raceData to the statsData to display on the screen
-    // when the 
-    useEffect(()=>{setDisplayStats(statsData)},[statsData])
+    
+    // this is a bad use effect but im not sure how to update the page
+    // useEffect(()=>{setDisplayStats(statsData)},[statsData])
     function statsDisplay(){
         let display = {...statsData}
 
@@ -59,7 +60,7 @@ export default function Home() {
                         console.log(stat + currentValue)
                         console.log(stat + element.ability_score.index + bonus)
                         console.log(total)
-                        display.stat = total
+                        display[stat] = total
                         console.log(display)
                         // we've successfully compared the two PROPERTIES now we need to add their values together
                     }
@@ -82,12 +83,16 @@ export default function Home() {
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
-            </div>                       
+            </div>
+            {false ? setDisplayStats() : null}                       
             <div>
                 CHA: {statsData.cha} CON: {statsData.con} DEX: {statsData.dex}  INT: {statsData.int} STR: {statsData.str}  WIS: {statsData.wis}
-            </div>
+            </div>            
             <div>
                 {classData.name}
+            </div>
+            <div>
+                {alignmentData.name}
             </div>
             <button onClick={(()=>{dispatch(reset())})}>reset</button>
             <button onClick={()=>statsDisplay()}>test stat display</button>

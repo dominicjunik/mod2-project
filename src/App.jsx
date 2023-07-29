@@ -10,6 +10,7 @@ import Races from './pages/Races';
 import Race from './components/Race';
 import Backgrounds from './pages/Backgrounds';
 import Alignment from './pages/Alignment';
+import Align from './components/Align';
 import AbilityScores from './pages/AbilityScores';
 import Traits from './pages/Traits';
 import Ability from './components/Ability';
@@ -76,6 +77,7 @@ async function testApi2(){
           <Route path="/races/:symbol" element={<Race/>}/>
           <Route path="/backgrounds" element={<Backgrounds/>}/>
           <Route path="/alignment" element={<Alignment />}/>
+          <Route path="/alignment/:symbol" element={<Align />}/>
           <Route path="/ability-scores" element={<AbilityScores/>}/>
           <Route path="/ability-scores/:symbol" element={<Ability/>}/>
           <Route path="/traits/:symbol" element={<Traits />} />
