@@ -48,54 +48,6 @@ export default function AbilityScores(){
       fetchAbilities()      
     },[])
 
-    // functions to map the data to the page
-    function loaded(){
-        return ( 
-            <div>
-                AbilityScores: 
-                <br />
-                enter scores manually or <button onClick={()=>rollStats()}>Roll!</button>  to randomly generate
-                      
-                <div>
-                    <form onSubmit={handleSubmit}>  
-
-                        {statsList.map( (stat)=> ( 
-                            <div key={stat.index}>
-                                <br />            
-                                <label htmlFor={stat.index}><Link to={`/ability-scores/${stat.index}`} state={{data: stat.url}}>{stat.name}:</Link></label>
-                                <input type="number"
-                                    id = {stat.index}
-                                    value={stats[stat.index]}
-                                    onChange={handleChange}
-                                    placeholder="enter a value or roll"
-                                    required 
-                                />                    
-                            </div>
-                            )) 
-                        }
-        
-                        <br />
-                        <button onClick={()=>navigate(-1)}>Back</button>                     
-                        <button type="submit">
-                                Confirm
-                        </button>               
-                    
-                    </form>           
-
-                </div>
-            </div>     
-        
-        )
-    }
-    
-    
-      function loading() {
-        return (
-            <h1>Loading...</h1>
-        )
-      }
-
-
     
     //////////////////
     // FORM SECTION //
@@ -147,7 +99,7 @@ export default function AbilityScores(){
     }
 
     function handleSubmit(event){
-        // event.preventDefault()        
+        event.preventDefault()        
         console.log(stats)
         let sum = stats.cha + stats.con + stats.dex + stats.int + stats.str + stats.wis
         if(sum < 18 || sum > 108) {
@@ -155,18 +107,66 @@ export default function AbilityScores(){
             return
         }
         localStorage.setItem('stats', JSON.stringify(stats))
-        dispatch(storeStats(stats))
-        // localStorage.setItem('stats', stats)
+        dispatch(storeStats(stats))       
         navigate('/') 
 
     }
 
     // useEffect(()=>{localStorage.setItem('stats', JSON.stringify(stats))}, [stats])
     
+    // functions to map the data to the page
+    function loaded(){
+        return ( 
+            <div>
+                AbilityScores: 
+                <br />
+                enter scores manually or <button onClick={()=>rollStats()}>Roll!</button>  to randomly generate
+                      
+                <div>
+                    <form onSubmit={handleSubmit}>  
+
+                        {statsList.map( (stat)=> ( 
+                            <div key={stat.index}>
+                                <br />            
+                                <label htmlFor={stat.index}><Link to={`/ability-scores/${stat.index}`} state={{data: stat.url}}>{stat.name}:</Link></label>
+                                <input 
+                                    type="number"
+                                    id = {stat.index}
+                                    value={stats[stat.index]}
+                                    onChange={handleChange}
+                                    placeholder="enter a value or roll"
+                                    required 
+                                />                    
+                            </div>
+                            )) 
+                        }
+        
+                        <br />
+                        <button onClick={()=>navigate(-1)}>Back</button>                     
+                        <button type="submit">
+                                Confirm
+                        </button>               
+                    
+                    </form>           
+
+                </div>
+            </div>     
+        
+        )
+    }
+    
+    
+      function loading() {
+        return (
+            <h1>Loading...</h1>
+        )
+      }
+
+
 
     return (
         statsList ? loaded() : loading()
-     )
+    )
 
     return (
         <div>
