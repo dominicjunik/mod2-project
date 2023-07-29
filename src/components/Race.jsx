@@ -88,7 +88,7 @@ export default function Race(){
                     <button onClick={()=>navigate(-1)}>Back</button>
                     <button onClick={()=> { 
                         selectRace()
-                        completeStep('race')
+                        dispatch(completeStep('race'))
                         navigate('/')                        
                     }}>
                             Confirm

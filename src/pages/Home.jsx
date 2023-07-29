@@ -12,7 +12,7 @@ import { reset } from "../characterSlice"
 export default function Home() {
     const navigate = useNavigate()
     // importing the user selected options from redux to display
-    const {step, classData, raceData} = useSelector(state => state.char)
+    const {step, classData, raceData, statsData} = useSelector(state => state.char)
 
     // enabling the reset button
     let dispatch = useDispatch()
@@ -38,6 +38,9 @@ export default function Home() {
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
+            </div>            
+            <div>
+                CHA: {statsData.cha} CON: {statsData.con} Dex: {statsData.dex}  INT: {statsData.int} STR: {statsData.str}  WIS: {statsData.wis}
             </div>
             <div>
                 {classData.name}

@@ -3,12 +3,13 @@ import { useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useDispatch } from "react-redux"
 import { storeClassData } from "../characterSlice"
-import { ReactMarkdown } from "react-markdown/lib/react-markdown"
+
 
 export default function Class(){
 
     //this is used to save the data should the user press confirm on this page
-    const dispatch = useDispatch()    
+    const dispatch = useDispatch()
+        
 
     // this gets state from the previous page that was linked here
     const location = useLocation()

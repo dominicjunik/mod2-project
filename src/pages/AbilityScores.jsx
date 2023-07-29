@@ -1,20 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AbilityForm from "../components/AbilityForm";
+import { storeStats } from "../characterSlice"
+import { useDispatch, useSelector } from "react-redux";
 
 export default function AbilityScores(){    
     //for navigation buttons
     let navigate = useNavigate()
     
+    //for updating the state to the global state
+    const dispatch = useDispatch()
     
-    const [stats, setStats] = useState({
-        cha: 0,
-        con: 0,
-        dex: 0,
-        int: 0,
-        str: 0,
-        wis: 0
-    })
+
+    // a local state variable to modify the form
+    // fed the default from the global state of the same variable incase they change pages
+    const { statsData } = useSelector(state => state.char)
+
+    const [stats, setStats] = useState(statsData)
+    
     
 
     // random number range that is inclusive for the min and the max value
@@ -51,26 +53,34 @@ export default function AbilityScores(){
             wis: generateValue()
         }
         setStats(newStats)
-       
+        
+        
     }
 
     function handleChange(event){
         let key = event.target.id
         let num = Number(event.target.value)
         setStats({...stats, [key]: num})
+        
+        // localStorage.setItem('stats', stats)
     }
 
     function handleSubmit(event){
-        event.preventDefault()        
+        // event.preventDefault()        
         console.log(stats)
         let sum = stats.cha + stats.con + stats.dex + stats.int + stats.str + stats.wis
         if(sum < 18 || sum > 108) {
             alert('Your stats are crazy, fix them')
             return
         }
+        localStorage.setItem('stats', JSON.stringify(stats))
+        dispatch(storeStats(stats))
+        // localStorage.setItem('stats', stats)
         navigate('/') 
 
     }
+
+    // useEffect(()=>{localStorage.setItem('stats', JSON.stringify(stats))}, [stats])
     
 
     return (

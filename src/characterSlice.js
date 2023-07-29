@@ -6,7 +6,15 @@ const initialState = {
     // step = [false, false, false, false, false]
     // step = {race: false, class: false, abilityScore: false, alignment: false, background: false}
     step: storedStep(),
-    stats: 'hi'   
+    statsData: storedStats()   
+}
+
+function storedStats(){
+    let storedStats = localStorage.getItem('stats')
+    let storedStatsParsed = JSON.parse(storedStats)
+    if (storedStatsParsed) {
+        return storedStatsParsed
+    } else {return {cha: 0, con: 0, dex: 0, int: 0, str: 0, wis: 0}}
 }
 
 // keeps track of the character creation process step
@@ -39,7 +47,6 @@ function storedRace(){
 
 }
 
-
 const characterSlice = createSlice({
     name: 'characterSlice',
     initialState,
@@ -56,10 +63,14 @@ const characterSlice = createSlice({
             // example action.payload => "character"
             let step = action.payload
             console.log('ran the complete step function')
-            let newState = {...state, [step]: true}
+            state = {...state, [step]: true}
             // object using bracket notation to get the key from the action.payload
-            state = newState
             
+            
+        },
+        storeStats: (state, action) => {
+            // state.stats = action.payload
+            state.stats = {...state.stats, ...action.payload}
         },
         reset: (state) => {
             localStorage.clear()
@@ -75,4 +86,4 @@ const characterSlice = createSlice({
 
 export default characterSlice.reducer
 
-export const { reset, completeStep, storeClassData, storeRaceData} = characterSlice.actions
+export const { reset, completeStep, storeClassData, storeRaceData, storeStats} = characterSlice.actions
