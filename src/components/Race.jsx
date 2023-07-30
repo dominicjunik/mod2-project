@@ -48,10 +48,10 @@ export default function Race(){
         localStorage.setItem('raceData', JSON.stringify(race))
     }
 
-    //function to display the ability scores
+    //function to display the ability scores  and link the attribute to the ability score page -> the map is a mess but im not sure how to make it prettier
     function renderAbilityScores(){
         return (
-            race.ability_bonuses.map((ability)=>(<div key={ability.ability_score.name}>{ability.ability_score.name} +{ability.bonus}</div>))
+            race.ability_bonuses.map((ability)=>(<div key={ability.ability_score.name}><Link key={ability.ability_score.index} to={`/ability-scores/${ability.ability_score.index}`} state={{data: ability.ability_score.url}}>{ability.ability_score.name}</Link> +{ability.bonus}</div>))
         )
     }
 

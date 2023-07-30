@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useDispatch } from "react-redux"
 import { storeClassData } from "../characterSlice"
@@ -40,7 +40,7 @@ export default function Class(){
         }
         
     }
-  
+    
 
     // on page load retrieve data from api
     useEffect(()=>{
@@ -55,7 +55,7 @@ export default function Class(){
 
     function renderSavingThrows(){
         return (
-            character.saving_throws.map((save)=>(<div key={save.index}>{save.name}</div>))
+            character.saving_throws.map((save)=>(<div key={save.index}><Link key={save.name} to={`/ability-scores/${save.index}`} state={{data: save.url}}>{save.name}</Link></div>))
         )
     }
 
