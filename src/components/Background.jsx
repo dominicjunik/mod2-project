@@ -20,14 +20,19 @@ export default function Background(){
         dispatch(storeBackgroundData(data))
         localStorage.setItem('backgroundData', JSON.stringify(data))
     }
+    
 
      // displays the data for the chosen character class
+     // some descriptions have imbedded markdown so ive tried to add logic so they do not display
      function displayBackground() {
+        console.log('it does not include backslash n:')
+        console.log(!(data.desc.includes('|')))
         return(
             <div>
+                
                 <div>
                     <h1>{data.name}</h1>
-                    <div>{data.desc}</div>             
+                    { data.desc.includes('|') ? null : <div>{data.desc}</div>}                    
                 </div>
                                  
                 <div>
