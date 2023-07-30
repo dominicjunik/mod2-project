@@ -15,7 +15,7 @@ export default function Home() {
 
     const navigate = useNavigate()
     // importing the user selected options from redux to display
-    const {step, classData, raceData, statsData, alignmentData} = useSelector(state => state.char)
+    const {step, classData, raceData, statsData, alignmentData, backgroundData} = useSelector(state => state.char)
 
     // enabling the reset button
     let dispatch = useDispatch()
@@ -93,6 +93,9 @@ export default function Home() {
             </div>
             <div>
                 {alignmentData.name}
+            </div>
+            <div>
+                {backgroundData.name}
             </div>
             <button onClick={(()=>{dispatch(reset())})}>reset</button>
             <button onClick={()=>statsDisplay()}>test stat display</button>

@@ -14,6 +14,7 @@ import Align from './components/Align';
 import AbilityScores from './pages/AbilityScores';
 import Traits from './pages/Traits';
 import Ability from './components/Ability';
+import Background from './components/Background';
 
 function App() {
 
@@ -76,6 +77,7 @@ async function testApi2(){
           <Route path="/races" element={<Races/>}/>
           <Route path="/races/:symbol" element={<Race/>}/>
           <Route path="/backgrounds" element={<Backgrounds/>}/>
+          <Route path="/backgrounds/:symbol" element={<Background/>}/>
           <Route path="/alignment" element={<Alignment />}/>
           <Route path="/alignment/:symbol" element={<Align />}/>
           <Route path="/ability-scores" element={<AbilityScores/>}/>

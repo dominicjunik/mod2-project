@@ -11,7 +11,8 @@ const initialState = {
     // step = {race: false, class: false, abilityScore: false, alignment: false, background: false}
     step: storedStep(),
     statsData: storedStats(),
-    alignmentData: storedAlignment()   
+    alignmentData: storedAlignment(),
+    backgroundData: storedBackground()   
 }
 
 function storedStats(){
@@ -60,7 +61,15 @@ function storedAlignment(){
     if (storedAlignParsed) {
         return storedAlignParsed
     } else {return {}}
+}
 
+// local storage for background data
+function storedBackground(){
+    let storedBackground = localStorage.getItem('backgroundData')
+    let storedBackgroundParsed = JSON.parse(storedBackground)    
+    if (storedBackgroundParsed) {
+        return storedBackgroundParsed
+    } else {return {}}
 }
 
 
@@ -92,6 +101,9 @@ const characterSlice = createSlice({
         storeAlignment: (state, action) => {
             state.alignmentData = action.payload
         },
+        storeBackgroundData: (state, action) => {
+            state.backgroundData = action.payload  
+        },
         reset: (state) => {
             localStorage.clear()
             state = initialState
@@ -106,4 +118,4 @@ const characterSlice = createSlice({
 
 export default characterSlice.reducer
 
-export const { reset, completeStep, storeClassData, storeRaceData, storeStats, storeAlignment} = characterSlice.actions
+export const { reset, completeStep, storeClassData, storeRaceData, storeStats, storeAlignment, storeBackgroundData} = characterSlice.actions

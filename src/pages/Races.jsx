@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 export default function Races(){
-    const [raceList, setRaceList] =  useState([])  
+    const [raceList, setRaceList] =  useState([])
+    
+    const navigate = useNavigate()
 
     async function fetchRaces(){
 
@@ -29,9 +31,9 @@ export default function Races(){
     },[])
 
     
-  function loaded(){
-    return (
-      <div>
+    function loaded(){
+      return (
+        <div>
           <h1>choose a race</h1>
           <div className="classBox">
           </div>
@@ -42,11 +44,11 @@ export default function Races(){
                 </div>
               </Link> 
             ) )}
-            
+          <button onClick={()=>navigate(-1)}>Back</button>  
           
-      </div>
-  )
-}
+        </div>
+      )
+    }
 
     function loading() {
         return (

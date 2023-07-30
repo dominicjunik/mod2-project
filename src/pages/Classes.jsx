@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 
 export default function Classes(){
 
-  const [classList, setClassList] =  useState([])  
+  const [classList, setClassList] =  useState([])
+  
+  const navigate = useNavigate()
 
   async function fetchClasses(){
 
@@ -36,17 +38,16 @@ export default function Classes(){
     return (
       <div>
           <h1>choose a class</h1>
-          <div className="classBox">
-          </div>
+          <div>
             {classList.map( (character) => ( 
-              <Link key={character.name} to={`/classes/${character.name}`} state={{data: character.url}}>
-                <div > 
-                {character.name} 
-                </div>
-              </Link> 
-            ) )}
-            {/* {classList.map( (character) => ( <li key={character.name}> {character.name} </li> ) )} */}
-          
+                <Link key={character.name} to={`/classes/${character.name}`} state={{data: character.url}}>
+                  <div > 
+                  {character.name} 
+                  </div>
+                </Link> 
+              ) )}
+          </div>        
+          <button onClick={()=>navigate(-1)}>Back</button>
       </div>
     )
   }
