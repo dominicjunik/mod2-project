@@ -72,7 +72,7 @@ export default function Home() {
     return (
         <div>
             <h1>D&D API CHARACTER CREATOR</h1>
-            {step.race && step.class && step.abilityScore && step.alignment ? null : (step.race ? <Link to={journey()}> <div>NEXT STEP</div></Link> : <Link to="/races"> <div>START</div></Link>)}
+            {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div>NEXT STEP</div></Link> : <Link to="/races"> <div>START</div></Link>)}
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
