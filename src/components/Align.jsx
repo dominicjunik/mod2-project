@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useDispatch } from "react-redux"
-import { storeAlignment } from "../characterSlice"
+import { storeAlignment, completeStep } from "../characterSlice"
 
 export default function Align(){
 
@@ -70,6 +70,7 @@ export default function Align(){
                     <button onClick={()=>navigate(-1)}>Back</button>                    
                     <button onClick={()=> { 
                         selectAlignment()
+                        dispatch(completeStep('alignment'))
                         navigate('/')
                     }}>
                             Confirm

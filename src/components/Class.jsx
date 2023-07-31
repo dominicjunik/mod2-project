@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { useDispatch } from "react-redux"
-import { storeClassData } from "../characterSlice"
+import { storeClassData, completeStep } from "../characterSlice"
 
 
 export default function Class(){
@@ -123,6 +123,7 @@ export default function Class(){
                     <button onClick={()=>navigate(-1)}>Back</button>                    
                     <button onClick={()=> { 
                         selectClass()
+                        dispatch(completeStep('class'))
                         navigate('/')
                     }}>
                             Confirm

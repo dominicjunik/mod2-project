@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { storeStats } from "../characterSlice"
+import { storeStats, completeStep } from "../characterSlice"
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { Link } from "react-router-dom"
@@ -107,7 +107,8 @@ export default function AbilityScores(){
             return
         }
         localStorage.setItem('stats', JSON.stringify(stats))
-        dispatch(storeStats(stats))       
+        dispatch(storeStats(stats))
+        dispatch(completeStep('abilityScore'))       
         navigate('/') 
 
     }

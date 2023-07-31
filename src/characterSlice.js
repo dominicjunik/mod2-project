@@ -89,8 +89,9 @@ const characterSlice = createSlice({
         completeStep: (state, action) => {
             // example action.payload => "character"
             let step = action.payload
-            console.log('ran the complete step function')
-            state = {...state, [step]: true}
+            console.log(step, 'ran the complete step function')
+            state.step = {...state.step, [step]: true}
+            console.log(state.step)
             // object using bracket notation to get the key from the action.payload
             
             

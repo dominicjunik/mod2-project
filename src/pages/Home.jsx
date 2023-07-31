@@ -59,11 +59,11 @@ export default function Home() {
                         let bonus = element.bonus
                         let currentValue = display[stat]
                         let total = currentValue + bonus
-                        console.log(stat + currentValue)
-                        console.log(stat + element.ability_score.index + bonus)
-                        console.log(total)
+                        // console.log(stat + currentValue)
+                        // console.log(stat + element.ability_score.index + bonus)
+                        // console.log(total)
                         display[stat] = `${total}(+${bonus})`
-                        console.log(display)
+                        // console.log(display)
                         // we've successfully compared the two PROPERTIES now we need to add their values together
                     }
             }
@@ -76,7 +76,7 @@ export default function Home() {
     return (
         <div>
             <h1>D&D API WEBSITE</h1>
-            {step.races ? <button onClick={()=>journey()}>next step</button> : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
+            {step.race ? <button onClick={()=>journey()}>next step</button> : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
@@ -94,7 +94,7 @@ export default function Home() {
                 {backgroundData.name}
             </div>
             <button onClick={(()=>{dispatch(reset())})}>reset</button>
-            <button onClick={()=>statsDisplay()}>test stat display</button>
+            
             
             
         </div>
