@@ -43,11 +43,7 @@ export default function Ability(){
                 <div>{ability.desc[0]}</div>
                 <br />
                 <h2>Game Mechanics:</h2>
-                <div>{ability.desc[1]}</div>
-
-
-                {/* <h2>{ability}</h2>              */}
-               
+                <div>{ability.desc[1]}</div>               
                 <button onClick={()=> navigate(-1)}>back</button>
             </div>
             )
@@ -55,7 +51,4 @@ export default function Ability(){
     
 
     return ability ? displayAbility() : <div>loading...</div>
-
-
-    return <div>ability!</div>
 }

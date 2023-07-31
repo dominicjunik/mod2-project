@@ -7,7 +7,7 @@ export default function Nav() {
         <div className="nav">       
         <img src={img} width={50} height={50} />        
             <Link to="/">
-                <div>Home</div>
+                <div>Character</div>
             </Link>
             <Link to="/races">
                 <div>Races</div>

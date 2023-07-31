@@ -28,11 +28,7 @@ export default function Home() {
             else if (!step.class) return('/classes'); 
             else if (!step.abilityScore) return('/ability-scores'); 
             else if (!step.alignment) return('/alignment');
-            else if (!step.background) return ('/backgrounds') 
-            else if (step.race && step.class && step.abilityScore && step.alignment) return '/'     
-        
-
-
+            else if (!step.background) return ('/backgrounds');             
     }    
     
     ////////////////////////////////
@@ -49,32 +45,34 @@ export default function Home() {
             setDisplayStats(statsData) 
             return 
         }        
-        // loop over each stat in the stats OBJECT
-        for (const stat in display){
-            // loop over each index in the bonus stats array
-            for (const element of raceData.ability_bonuses){
-                    // check if the bonus stat is the same as the current stat in the object loop
-                    if (stat === element.ability_score.index){
-                        // console.log(display)
-                        let bonus = element.bonus
-                        let currentValue = display[stat]
-                        let total = currentValue + bonus
-                        // console.log(stat + currentValue)
-                        // console.log(stat + element.ability_score.index + bonus)
-                        // console.log(total)
-                        display[stat] = `${total}(+${bonus})`
-                        // console.log(display)
-                        // we've successfully compared the two PROPERTIES now we need to add their values together
-                    }
+        
+        // loop over each index in the bonus stats array
+        for (const element of raceData.ability_bonuses){
+            // loop over each stat in the stats OBJECT
+            for (const stat in display){
+                // check if the bonus stat is the same as the current stat in the object loop
+                if (stat === element.ability_score.index){
+                    // console.log(display)
+                    let bonus = element.bonus
+                    let currentValue = display[stat]
+                    let total = currentValue + bonus
+                    // console.log(stat + currentValue)
+                    // console.log(stat + element.ability_score.index + bonus)
+                    // console.log(total)
+                    display[stat] = `${total}(+${bonus})`
+                    // console.log(display)
+                    // we've successfully compared the two PROPERTIES now we need to add their values together
+                }
             }
         }
+        
         setDisplayStats(display)   
     }
 
     return (
         <div>
-            <h1>D&D API WEBSITE</h1>
-            {step.race ? <Link to={journey()}> <div>'next step'</div></Link> : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
+            <h1>D&D API CHARACTER CREATOR</h1>
+            {step.race && step.class && step.abilityScore && step.alignment ? null : (step.race ? <Link to={journey()}> <div>NEXT STEP</div></Link> : <Link to="/races"> <div>START</div></Link>)}
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
