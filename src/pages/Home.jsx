@@ -11,7 +11,7 @@ import { useEffect, useState } from "react"
 
 
 export default function Home() {
-    const [displayStats, setDisplayStats] = useState()
+    const [displayStats, setDisplayStats] = useState({})
 
     const navigate = useNavigate()
     // importing the user selected options from redux to display
@@ -44,9 +44,17 @@ export default function Home() {
     
     // this is a bad use effect but im not sure how to update the page
     // useEffect(()=>{setDisplayStats(statsData)},[statsData])
-    function statsDisplay(){
-        let display = {...statsData}
 
+
+    // local state that holds the stats display useEffect on race/ability
+    useEffect(()=>{ statsDisplay()},[statsData, raceData])
+    function statsDisplay(){
+        console.log(raceData.ability_bonuses)
+        let display = {...statsData}
+        if(!raceData.ability_bonuses){
+            setDisplayStats(statsData) 
+            return 
+        }        
         // loop over each stat in the stats OBJECT
         for (const stat in display){
             // loop over each index in the bonus stats array
@@ -60,20 +68,15 @@ export default function Home() {
                         console.log(stat + currentValue)
                         console.log(stat + element.ability_score.index + bonus)
                         console.log(total)
-                        display[stat] = total
+                        display[stat] = `${total}(+${bonus})`
                         console.log(display)
                         // we've successfully compared the two PROPERTIES now we need to add their values together
                     }
             }
         }
 
-        setDisplayStats(display)
-            
-        return (
-            <div>
-                CHA: {display.cha} CON: {display.con} DEX: {display.dex}  INT: {display.int} STR: {display.str}  WIS: {display.wis}              
-            </div>
-        )
+        setDisplayStats(display)       
+      
     }
 
     return (
@@ -83,10 +86,9 @@ export default function Home() {
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
-            </div>
-            {false ? setDisplayStats() : null}                       
+            </div>                                  
             <div>
-                CHA: {statsData.cha} CON: {statsData.con} DEX: {statsData.dex}  INT: {statsData.int} STR: {statsData.str}  WIS: {statsData.wis}
+                CHA: {displayStats.cha} CON: {displayStats.con} DEX: {displayStats.dex}  INT: {displayStats.int} STR: {displayStats.str}  WIS: {displayStats.wis}
             </div>            
             <div>
                 {classData.name}

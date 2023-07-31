@@ -98,7 +98,7 @@ const characterSlice = createSlice({
         storeStats: (state, action) => {
             
             console.log(action.payload, 'hi')
-            state.stats = action.payload
+            state.statsData = action.payload
             return state
         },
         storeAlignment: (state, action) => {
