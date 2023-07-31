@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-
+import img from "../assets/d20.png"
 
 export default function Nav() {
    
     return (   
-        <div className="nav">
-        <img src="src\assets\d20.png" width={50} height={50} />        
+        <div className="nav">       
+        <img src={img} width={50} height={50} />        
             <Link to="/">
                 <div>Home</div>
             </Link>

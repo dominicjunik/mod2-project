@@ -23,14 +23,16 @@ export default function Home() {
     // this function directs the user to the next step in character creation
     // step = {race: false, class: false, abilityScore: false, alignment: false, background: false}
     function journey(){
-        switch(step){
-            case (step.race): return <div>made it here</div>     
-            case (!step.class): navigate('/classes'); break;
-            case (!step.abilityScore): navigate('/classes'); break;
-            case (!step.alignment): navigate('/classes'); break;
-            case (step.race && step.class && step.abilityScore && step.alignment): return <div>All done!!</div>;
-            default: return null
-        }
+
+            if (!step.race) return('/races');     
+            else if (!step.class) return('/classes'); 
+            else if (!step.abilityScore) return('/ability-scores'); 
+            else if (!step.alignment) return('/alignment');
+            else if (!step.background) return ('/backgrounds') 
+            else if (step.race && step.class && step.abilityScore && step.alignment) return '/'     
+        
+
+
     }    
     
     ////////////////////////////////
@@ -66,15 +68,13 @@ export default function Home() {
                     }
             }
         }
-
-        setDisplayStats(display)       
-      
+        setDisplayStats(display)   
     }
 
     return (
         <div>
             <h1>D&D API WEBSITE</h1>
-            {step.race ? journey() : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
+            {step.race ? <Link to={journey()}> <div>'next step'</div></Link> : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
