@@ -11,6 +11,7 @@ div {
     /* background: linear-gradient(260deg, rgba(0,0,0,0.8211659663865546) 0%, rgba(255,255,255,0) 100%); */
     background: linear-gradient(250deg, rgba(0, 0, 0, 0.11) 0%, rgba(255, 255, 255, 0) 100%);
     background: rgba(17, 12, 12, 0.158);
+    padding: 10px;    
     width: auto;
     border-radius: 10px;
 }
@@ -19,6 +20,8 @@ div {
 display: flex;
   justify-content: space-between;
   background-color: rgb(70, 70, 85);
+  flex-wrap: wrap;
+  
   
   color: white;
   padding: 15px;
@@ -33,6 +36,7 @@ a {
 .nav a {
     color: white;
     text-decoration: none;
+    
   }
 
 

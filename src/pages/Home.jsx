@@ -26,7 +26,7 @@ export default function Home() {
         switch(step){
             case (step.race): useNavigate('/classes')
             
-            case (step.class): return 'Next step - choose ability scores';
+            case (step.class): useNavigate('/classes')
             case (step.abilityScore): return 'Next step - choose alignment';
             case (step.alignment): return 'Next step - choose background';
             case (step.race && step.class && step.abilityScore && step.alignment): return 'All done!!';
@@ -36,21 +36,15 @@ export default function Home() {
     
     ////////////////////////////////
     // adding race bonus to stats //
-    ////////////////////////////////
-    // currently broken  //
-    ///////////////////////
-    
+    ////////////////////////////////    
     // this function adds the bonus from the raceData to the statsData to display on the screen
-    
-    // this is a bad use effect but im not sure how to update the page
-    // useEffect(()=>{setDisplayStats(statsData)},[statsData])
-
-
     // local state that holds the stats display useEffect on race/ability
     useEffect(()=>{ statsDisplay()},[statsData, raceData])
+
     function statsDisplay(){
         console.log(raceData.ability_bonuses)
         let display = {...statsData}
+        // if they havent selected a race yet then we just return the ability scores
         if(!raceData.ability_bonuses){
             setDisplayStats(statsData) 
             return 
@@ -82,7 +76,7 @@ export default function Home() {
     return (
         <div>
             <h1>D&D API WEBSITE</h1>
-            {step.race ? <button onClick={()=>journey()}>next step</button> : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
+            {step.races ? <button onClick={()=>journey()}>next step</button> : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}

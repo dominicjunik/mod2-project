@@ -36,7 +36,6 @@ export default function Races(){
         <div>
           <h1>choose a race</h1>
           <div className="classBox">
-          </div>
             {raceList.map( (race) => ( 
               <Link key={race.name} to={`/races/${race.index}`} state={{data: race.url}}>
                 <div > 
@@ -44,6 +43,8 @@ export default function Races(){
                 </div>
               </Link> 
             ) )}
+          </div>
+            
           <button onClick={()=>navigate(-1)}>Back</button>  
           
         </div>
