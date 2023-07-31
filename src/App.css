@@ -7,10 +7,11 @@ html {
 
 }
 div {
-    background: rgb(0,0,0);
-    background: linear-gradient(260deg, rgba(0,0,0,0.8211659663865546) 0%, rgba(255,255,255,0) 100%);
+    /* background: rgb(0,0,0); */
+    /* background: linear-gradient(260deg, rgba(0,0,0,0.8211659663865546) 0%, rgba(255,255,255,0) 100%); */
+    background: linear-gradient(250deg, rgba(0, 0, 0, 0.11) 0%, rgba(255, 255, 255, 0) 100%);
     width: auto;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .nav{
@@ -23,7 +24,14 @@ display: flex;
   font-size: 2em;
 }
 
- a {
+a {
+    color: rgb(174, 164, 191);
+
+}
+
+.nav a {
     color: white;
     text-decoration: none;
   }
+
+
