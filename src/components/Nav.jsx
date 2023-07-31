@@ -5,7 +5,7 @@ export default function Nav() {
    
     return (   
         <div className="nav">
-        <img src="src\assets\d20.png" width={75} height={75} />
+        <img src="src\assets\d20.png" width={50} height={50} />        
             <Link to="/">
                 <div>Home</div>
             </Link>

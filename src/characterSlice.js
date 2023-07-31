@@ -81,6 +81,7 @@ const characterSlice = createSlice({
             console.log(action.payload)
             console.log(state.classData)
             state.classData = action.payload
+            return state
         },
         storeRaceData: (state, action) => {
             state.raceData = action.payload
@@ -95,8 +96,10 @@ const characterSlice = createSlice({
             
         },
         storeStats: (state, action) => {
+            
+            console.log(action.payload, 'hi')
             state.stats = action.payload
-            // state.stats = {...state.stats, ...action.payload}
+            return state
         },
         storeAlignment: (state, action) => {
             state.alignmentData = action.payload

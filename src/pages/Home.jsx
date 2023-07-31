@@ -16,7 +16,7 @@ export default function Home() {
     const navigate = useNavigate()
     // importing the user selected options from redux to display
     const {step, classData, raceData, statsData, alignmentData, backgroundData} = useSelector(state => state.char)
-
+    console.log(statsData, 'stats data')
     // enabling the reset button
     let dispatch = useDispatch()
     
