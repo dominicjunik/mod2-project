@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
    
-    return (
+    return (   
         <div className="nav">
-            <img src="../assets/d20.png"/>
+        <img src="src\assets\d20.png" width={75} height={75} />
             <Link to="/">
                 <div>Home</div>
             </Link>
@@ -24,6 +24,6 @@ export default function Nav() {
             <Link to="/ability-scores">
                 <div>Ability Scores</div>
             </Link>
-        </div>
+        </div>    
     )
 }

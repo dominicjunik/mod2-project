@@ -7,13 +7,17 @@ html {
 
 }
 div {
-    /* background-color: rgb(70, 70, 85); */
+    background: rgb(0,0,0);
+    background: linear-gradient(260deg, rgba(0,0,0,0.8211659663865546) 0%, rgba(255,255,255,0) 100%);
+    width: auto;
+    border-radius: 20px;
 }
 
 .nav{
 display: flex;
   justify-content: space-between;
   background-color: rgb(70, 70, 85);
+  
   color: white;
   padding: 15px;
   font-size: 2em;
