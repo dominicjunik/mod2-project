@@ -16,7 +16,7 @@ export default function Home() {
     const navigate = useNavigate()
     // importing the user selected options from redux to display
     const {step, classData, raceData, statsData, alignmentData, backgroundData} = useSelector(state => state.char)
-    console.log(statsData, 'stats data')
+   
     // enabling the reset button
     let dispatch = useDispatch()
     
@@ -24,15 +24,14 @@ export default function Home() {
     // step = {race: false, class: false, abilityScore: false, alignment: false, background: false}
     function journey(){
         switch(step){
-            case (step.race): useNavigate('/classes')
-            
-            case (step.class): useNavigate('/classes')
-            case (step.abilityScore): return 'Next step - choose alignment';
-            case (step.alignment): return 'Next step - choose background';
-            case (step.race && step.class && step.abilityScore && step.alignment): return 'All done!!';
+            case (step.race): return <div>made it here</div>     
+            case (!step.class): navigate('/classes'); break;
+            case (!step.abilityScore): navigate('/classes'); break;
+            case (!step.alignment): navigate('/classes'); break;
+            case (step.race && step.class && step.abilityScore && step.alignment): return <div>All done!!</div>;
             default: return null
         }
-    }
+    }    
     
     ////////////////////////////////
     // adding race bonus to stats //
@@ -41,8 +40,7 @@ export default function Home() {
     // local state that holds the stats display useEffect on race/ability
     useEffect(()=>{ statsDisplay()},[statsData, raceData])
 
-    function statsDisplay(){
-        console.log(raceData.ability_bonuses)
+    function statsDisplay(){        
         let display = {...statsData}
         // if they havent selected a race yet then we just return the ability scores
         if(!raceData.ability_bonuses){
@@ -55,7 +53,7 @@ export default function Home() {
             for (const element of raceData.ability_bonuses){
                     // check if the bonus stat is the same as the current stat in the object loop
                     if (stat === element.ability_score.index){
-                        console.log(display)
+                        // console.log(display)
                         let bonus = element.bonus
                         let currentValue = display[stat]
                         let total = currentValue + bonus
@@ -76,7 +74,7 @@ export default function Home() {
     return (
         <div>
             <h1>D&D API WEBSITE</h1>
-            {step.race ? <button onClick={()=>journey()}>next step</button> : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
+            {step.race ? journey() : <Link to="/races"> <div>'Begin character creation! click me!'</div></Link>}
             <h2>Your Character:</h2>
             <div>
                 {raceData.name}
