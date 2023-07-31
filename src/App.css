@@ -1,3 +1,25 @@
-div {
-    /* border: 1px solid black; */
+html {
+    color: white;
+    /* background-image: url('https://cdn.shopify.com/s/files/1/1066/8352/articles/backgrounds_compressed.jpg?v=1590088985'); */
+    background-color: rgb(86, 110, 61);
+    height: 100%;
+    width: 100%;
+
 }
+div {
+    /* background-color: rgb(70, 70, 85); */
+}
+
+.nav{
+display: flex;
+  justify-content: space-between;
+  background-color: rgb(70, 70, 85);
+  color: white;
+  padding: 15px;
+  font-size: 2em;
+}
+
+ a {
+    color: white;
+    text-decoration: none;
+  }
