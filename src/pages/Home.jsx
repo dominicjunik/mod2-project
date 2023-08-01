@@ -202,7 +202,7 @@ export default function Home() {
 
    
     return (
-        <div className="bg-parchment w-96 ">
+        <div className="bg-parchment w-96 shadow-pop-out">
             <h1>D&D API CHARACTER CREATOR</h1>
 
             {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div>NEXT STEP</div></Link> : <Link to="/races"> <div>START</div></Link>)}
