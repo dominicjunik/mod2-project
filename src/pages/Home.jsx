@@ -17,7 +17,8 @@ export default function Home() {
     const [displayStats, setDisplayStats] = useState({})
     const [bio, setBio] = useState({
         name: '',
-        age: ''
+        age: '',
+        hp: 0,        
     })
 
 
@@ -31,7 +32,6 @@ export default function Home() {
     // this function directs the user to the next step in character creation
     // step = {race: false, class: false, abilityScore: false, alignment: false, background: false}
     function journey(){
-
             if (!step.race) return('/races');     
             else if (!step.class) return('/classes'); 
             else if (!step.abilityScore) return('/ability-scores'); 
@@ -67,9 +67,9 @@ export default function Home() {
                     // console.log(stat + currentValue)
                     // console.log(stat + element.ability_score.index + bonus)
                     // console.log(total)
+                    // Becuse this is just a display we can add the values together with text formatting into a string
                     display[stat] = `${total}(+${bonus})`
-                    // console.log(display)
-                    // we've successfully compared the two PROPERTIES now we need to add their values together
+                    // console.log(display)                   
                 }
             }
         }
@@ -85,6 +85,46 @@ export default function Home() {
             names.push(raceData.languages[lang].name)
         }return names.join(', ')
     }
+
+    //D&D has modifiers attached to each stat ths returns the value based on the input
+    function modStats(num){
+        if(num === 1) return -5
+        else if(num < 4) return -4
+        else if(num < 6) return -3
+        else if(num < 8) return -2
+        else if(num < 10) return -1
+        else if(num < 12) return 0
+        else if(num < 14) return 1
+        else if(num < 16) return 2
+        else if(num < 18) return 3
+        else if(num < 20) return 4
+        else return 0        
+    }
+
+    // displays the hp after calculating it
+    function calcHp(){        
+        if(typeof displayStats.con === "string" && classData.hit_die){
+            console.log('ypo')
+            // split the display mod
+            let numArr = displayStats.con.split('(+')
+            // take the total, numArr[0], and then caculate its modifier
+            let modifier = modStats(Number(numArr[0]))
+            // calc hp which is con modifier + hitdie
+            let hitpoints = modifier + classData.hit_die
+            console.log(hitpoints,modifier, classData.hit_die)
+            setBio({...bio, hp: hitpoints})
+            localStorage.setItem('bio', JSON.stringify(bio))
+        } else if (displayStats.con > 0){
+            let modifier = modStats(displayStats.con)
+            let hitpoints = modifier + classData.hit_die
+            setBio({...bio, hp: hitpoints})
+            localStorage.setItem('bio', JSON.stringify(bio))            
+        }
+        
+    }
+    // checking if display stats (ability scores) or classData (class selected) have changed to run the function
+    useEffect(()=>{calcHp()},[classData, displayStats])
+
 
     ///////////////
     // bio input //
@@ -104,7 +144,7 @@ export default function Home() {
             setBio(storedBioParsed)
         } 
     }
-    // on page load -> check storage and set the fields to the old values
+    // on page load -> check storage and set the fields to the old values    
     useEffect(()=>{storedBio()},[])
 
 
@@ -149,11 +189,11 @@ export default function Home() {
             </div>
 
             <div>
-                Hitpoints: 
+                Hitpoints: {bio.hp} / {bio.hp}
             </div>
             
             <div>
-                {alignmentData.name}
+                {alignmentData.name} ({alignmentData.abbreviation})
             </div>
 
             <div>
