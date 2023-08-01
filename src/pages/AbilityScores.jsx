@@ -130,7 +130,8 @@ export default function AbilityScores(){
                             <div key={stat.index}>
                                 <br />            
                                 <label htmlFor={stat.index}><Link to={`/ability-scores/${stat.index}`} state={{data: stat.url}}>{stat.name}:</Link></label>
-                                <input 
+                                <input
+                                    className=" text-black" 
                                     type="number"
                                     id = {stat.index}
                                     value={stats[stat.index]}

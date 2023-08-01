@@ -13,8 +13,9 @@ export default {
         'pixel-grey': "url('./src/assets/noise-background.png')",
       },
       colors: {
-        primary: 'rgb(128,0,0)', 
-        secondary: '#f6a494',
+        primary: 'rgb(128,0,0)',
+        secondary: 'rgb(102,0,0)', 
+        page: '#f6a494',
       }
     },
   },

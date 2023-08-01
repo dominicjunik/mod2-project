@@ -34,7 +34,7 @@ export default function Races(){
     function loaded(){
       return (
         <div>
-          <h1>choose a race</h1>
+          <h1>Choose a Race</h1>
           <div className="classBox">
             {raceList.map( (race) => ( 
               <Link key={race.name} to={`/races/${race.index}`} state={{data: race.url}}>
