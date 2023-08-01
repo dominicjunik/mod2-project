@@ -119,7 +119,7 @@ export default function AbilityScores(){
     function loaded(){
         return ( 
             <div>
-                AbilityScores: 
+                <h1>Ability Scores:</h1>
                 <br />
                 enter scores manually or <button onClick={()=>rollStats()}>Roll!</button>  to randomly generate
                       

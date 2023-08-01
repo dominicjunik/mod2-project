@@ -33,7 +33,7 @@ export default function Backgrounds(){
     function loaded(){
         return (
           <div>
-            <h1>choose a background</h1>
+            <h1>Choose a Background:</h1>
             <div>
               {backgroundList.map( (background) => (                 
                 <Link key={background.name} to={`/backgrounds/${background.slug}`} state={{data: background}}>

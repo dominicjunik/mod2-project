@@ -37,7 +37,7 @@ export default function Classes(){
   function loaded(){
     return (
       <div>
-          <h1>choose a class</h1>
+          <h1>Choose a Class:</h1>
           <div>
             {classList.map( (character) => ( 
                 <Link key={character.name} to={`/classes/${character.name}`} state={{data: character.url}}>
