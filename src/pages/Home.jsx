@@ -200,6 +200,10 @@ export default function Home() {
                 {backgroundData.name}
             </div>
 
+            <div>
+                 {classData.spellcasting ? `Spellcasting (${classData.spellcasting.spellcasting_ability.name})`  : null}
+            </div>
+
             <button onClick={(()=>{dispatch(reset())})}>reset</button>
             
             
