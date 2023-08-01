@@ -1,8 +1,7 @@
 html {
-    color: white;
-    background-image: url('./assets/noise-background.png');
-    background-color: rgb(86, 110, 61);
+    /* color: white; */
+    background-image: url('./assets/noise-background.png');    
     height: 100%;
     width: 100%;
-
+    
 }
