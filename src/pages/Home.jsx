@@ -162,7 +162,7 @@ export default function Home() {
         // called computer property name
         let key = event.target.id;
         setBio({ ...bio, [key]: event.target.value });
-        localStorage.setItem('bio', JSON.stringify(bio))
+        // localStorage.setItem('bio', JSON.stringify(bio))
     }
     // saves the bio info to the local storage
     function storedBio(){
@@ -182,24 +182,27 @@ export default function Home() {
         console.log('hit the submit function')
         event.preventDefault()
         console.log(event.target.id)
+        let obj = {}
         if (event.target.id === 'name') {
-            setBio({...bio, nameLock: true})
+            obj = {...bio, nameLock: true}
+            setBio(obj)            
             console.log('got to logic, name')
         }
         else if( event.target.id === 'age'){
-            setBio({...bio, ageLock: true})
+            obj = {...bio, ageLock: true}
+            setBio(obj)
             console.log('got to logic, age')
         }
         
         console.log(bio)
-        dispatch(storeBioData(bio))
-        
+        dispatch(storeBioData(obj))
+        localStorage.setItem('bio', JSON.stringify(obj))
     }    
 
 
-    
+   
     return (
-        <div>
+        <div className="">
             <h1>D&D API CHARACTER CREATOR</h1>
 
             {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div>NEXT STEP</div></Link> : <Link to="/races"> <div>START</div></Link>)}
