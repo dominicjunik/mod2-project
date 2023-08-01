@@ -77,6 +77,15 @@ export default function Home() {
         setDisplayStats(display)   
     }
 
+    // takes the array of language objects, pushes the names together into a new array and then joins them with a comma
+    function displayLang(){
+        let names = []
+        for(const lang in raceData.languages){            
+            // console.log(raceData.languages[lang].name)
+            names.push(raceData.languages[lang].name)
+        }return names.join(', ')
+    }
+
     ///////////////
     // bio input //
     // this handles the change in the input fields and saves them to the state
@@ -103,42 +112,54 @@ export default function Home() {
     return (
         <div>
             <h1>D&D API CHARACTER CREATOR</h1>
-            {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div>NEXT STEP</div></Link> : <Link to="/races"> <div>START</div></Link>)}
-            <h2>Your Character:</h2>
 
+            {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div>NEXT STEP</div></Link> : <Link to="/races"> <div>START</div></Link>)}
+            
+            <h2>Your Character:</h2>
 
             <div>
                 <form onSubmit={null}>
                     <div>                        
                         <input id="name" value={bio.name} onChange={handleChange} placeholder="name" />
                     </div>
-                    
                     <div>
-                        
                         <input id="age" value={bio.age} onChange={handleChange} placeholder="age"/>
                     </div>
-                    
                 </form>            
             </div>
 
-
-
-
             <div>
-                {raceData.name}
-            </div>                                  
+                {raceData.name} {classData.name}
+            </div>
+
             <div>
                 CHA: {displayStats.cha} CON: {displayStats.con} DEX: {displayStats.dex}  INT: {displayStats.int} STR: {displayStats.str}  WIS: {displayStats.wis}
-            </div>            
-            <div>
-                {classData.name}
             </div>
+
+            <div>
+                Speed: {raceData.speed}ft
+            </div>
+
+            <div>
+                Size: {raceData.size}
+            </div>
+
+            <div>
+                Languages: {raceData.languages ? displayLang() : null}
+            </div>
+
+            <div>
+                Hitpoints: 
+            </div>
+            
             <div>
                 {alignmentData.name}
             </div>
+
             <div>
                 {backgroundData.name}
             </div>
+
             <button onClick={(()=>{dispatch(reset())})}>reset</button>
             
             
