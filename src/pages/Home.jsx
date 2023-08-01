@@ -11,7 +11,15 @@ import { useEffect, useState } from "react"
 
 
 export default function Home() {
+
+    ////////////////////
+    // display states //
     const [displayStats, setDisplayStats] = useState({})
+    const [bio, setBio] = useState({
+        name: '',
+        age: ''
+    })
+
 
     const navigate = useNavigate()
     // importing the user selected options from redux to display
@@ -46,7 +54,7 @@ export default function Home() {
             return 
         }        
         
-        // loop over each index in the bonus stats array
+        // loop over each index in the bonus stats ARRAY
         for (const element of raceData.ability_bonuses){
             // loop over each stat in the stats OBJECT
             for (const stat in display){
@@ -69,11 +77,53 @@ export default function Home() {
         setDisplayStats(display)   
     }
 
+    ///////////////
+    // bio input //
+    // this handles the change in the input fields and saves them to the state
+    function handleChange(event) {
+        // setInput(event.target.value);
+        // called computer property name
+        let key = event.target.id;
+        setBio({ ...bio, [key]: event.target.value });
+        localStorage.setItem('bio', JSON.stringify(bio))
+    }
+    // saves the bio info to the local storage
+    function storedBio(){
+        let storedBio = localStorage.getItem('bio')
+        let storedBioParsed = JSON.parse(storedBio)
+        if (storedBioParsed) {
+            setBio(storedBioParsed)
+        } 
+    }
+    // on page load -> check storage and set the fields to the old values
+    useEffect(()=>{storedBio()},[])
+
+
+    
     return (
         <div>
             <h1>D&D API CHARACTER CREATOR</h1>
             {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div>NEXT STEP</div></Link> : <Link to="/races"> <div>START</div></Link>)}
             <h2>Your Character:</h2>
+
+
+            <div>
+                <form onSubmit={null}>
+                    <div>                        
+                        <input id="name" value={bio.name} onChange={handleChange} placeholder="name" />
+                    </div>
+                    
+                    <div>
+                        
+                        <input id="age" value={bio.age} onChange={handleChange} placeholder="age"/>
+                    </div>
+                    
+                </form>            
+            </div>
+
+
+
+
             <div>
                 {raceData.name}
             </div>                                  

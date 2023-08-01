@@ -25,6 +25,7 @@ function storedStats(){
 
 // keeps track of the character creation process step
 function storedStep(){
+    // next time this should be an array of objects with a .name and .value so I can use the find() mmethod on them 
     let storedStep = localStorage.getItem('step')
     let storedStepParsed = JSON.parse(storedStep)
     if (storedStepParsed) {
