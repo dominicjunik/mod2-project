@@ -4,7 +4,7 @@ import img from "../assets/d20.png"
 export default function Nav() {
    
     return (   
-        <div className="nav">       
+        <div className="bg-primary flex ">       
         <img src={img} width={50} height={50} />        
             <Link to="/">
                 <div>Character</div>
