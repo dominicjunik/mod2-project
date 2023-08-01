@@ -125,6 +125,27 @@ export default function Home() {
     // checking if display stats (ability scores) or classData (class selected) have changed to run the function
     useEffect(()=>{calcHp()},[classData, displayStats])
 
+    //////////////////////////////////////////////
+    // render functions stolen from other pages //
+    // slightly modified so i cant export
+    function renderTraits(){
+        return ( raceData.traits.map( (trait)=> <Link key={trait.index} to={`/traits/${trait.index}`} state={{data: trait.url}}><div key={trait.index}>{trait.name}</div> </Link>))
+    }
+
+    // i tried conditionally rendering INSIDE this function because all classes have starting equipment but they might not all have options
+    function renderStartingEquipment(){   
+        return (
+            <div>
+            {classData.starting_equipment.map((option)=> <div key={option.equipment.index}> {option.quantity} {option.equipment.name} </div> )}
+            A choice of:
+            {
+            classData.starting_equipment_options.length > 0 ? classData.starting_equipment_options.map((option)=><div key={option.desc}>-{option.desc}</div>) : null
+            }
+           
+            </div>
+        )
+    }
+
 
     ///////////////
     // bio input //
@@ -203,6 +224,32 @@ export default function Home() {
             <div>
                  {classData.spellcasting ? `Spellcasting (${classData.spellcasting.spellcasting_ability.name})`  : null}
             </div>
+
+            <div>
+                {classData.saving_throws ? `Saving Throws: ${classData.saving_throws[0].name} + ${classData.saving_throws[1].name}` : null}
+            </div>
+
+            <div>                  
+                <div>
+                    <div>
+                        Traits:
+                    </div>
+                    <div>
+                        {raceData ? renderTraits() : null}
+                    </div>
+                </div>
+            </div>  
+
+            <div>                  
+                <div>
+                    <div>
+                        Equipment:
+                    </div>
+                    <div>
+                        {classData ? renderStartingEquipment() : null}
+                    </div>
+                </div>
+            </div>  
 
             <button onClick={(()=>{dispatch(reset())})}>reset</button>
             
