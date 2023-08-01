@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
-import { reset } from "../characterSlice"
+import { reset, storeBioData } from "../characterSlice"
 import { useEffect, useState } from "react"
 
 
@@ -18,13 +18,15 @@ export default function Home() {
     const [bio, setBio] = useState({
         name: '',
         age: '',
-        hp: 0,        
+        hp: 0,
+        nameLock: false,
+        ageLock: false,        
     })
 
 
     const navigate = useNavigate()
     // importing the user selected options from redux to display
-    const {step, classData, raceData, statsData, alignmentData, backgroundData} = useSelector(state => state.char)
+    const {step, classData, raceData, statsData, alignmentData, backgroundData, bioData} = useSelector(state => state.char)
    
     // enabling the reset button
     let dispatch = useDispatch()
@@ -113,6 +115,7 @@ export default function Home() {
             let hitpoints = modifier + classData.hit_die
             console.log(hitpoints,modifier, classData.hit_die)
             setBio({...bio, hp: hitpoints})
+
             localStorage.setItem('bio', JSON.stringify(bio))
         } else if (displayStats.con > 0){
             let modifier = modStats(displayStats.con)
@@ -129,11 +132,15 @@ export default function Home() {
     // render functions stolen from other pages //
     // slightly modified so i cant export
     function renderTraits(){
+        // prevents the page from breaking if theres no data        
+        if(raceData.traits  === undefined){return}
         return ( raceData.traits.map( (trait)=> <Link key={trait.index} to={`/traits/${trait.index}`} state={{data: trait.url}}><div key={trait.index}>{trait.name}</div> </Link>))
     }
 
     // i tried conditionally rendering INSIDE this function because all classes have starting equipment but they might not all have options
-    function renderStartingEquipment(){   
+    function renderStartingEquipment(){  
+        // prevents the page from breaking if theres no data  
+        if(classData.starting_equipment  === undefined){return}
         return (
             <div>
             {classData.starting_equipment.map((option)=> <div key={option.equipment.index}> {option.quantity} {option.equipment.name} </div> )}
@@ -168,6 +175,27 @@ export default function Home() {
     // on page load -> check storage and set the fields to the old values    
     useEffect(()=>{storedBio()},[])
 
+    /////////////////
+    // name hijinx //
+    // this is to remove the input bar and add the name to the page
+    function handleSubmit(event){
+        console.log('hit the submit function')
+        event.preventDefault()
+        console.log(event.target.id)
+        if (event.target.id === 'name') {
+            setBio({...bio, nameLock: true})
+            console.log('got to logic, name')
+        }
+        else if( event.target.id === 'age'){
+            setBio({...bio, ageLock: true})
+            console.log('got to logic, age')
+        }
+        
+        console.log(bio)
+        dispatch(storeBioData(bio))
+        
+    }    
+
 
     
     return (
@@ -179,14 +207,16 @@ export default function Home() {
             <h2>Your Character:</h2>
 
             <div>
-                <form onSubmit={null}>
+                <form onSubmit={handleSubmit} id='name'>
                     <div>                        
-                        <input id="name" value={bio.name} onChange={handleChange} placeholder="name" />
+                        {bioData.nameLock === true ? `Name: ${bioData.name}` : <><input id="name" value={bio.name} onChange={handleChange} placeholder="name" /> <button type="submit" id='name'>+</button></>}
                     </div>
+                </form>
+                <form onSubmit={handleSubmit} id='age'>
                     <div>
-                        <input id="age" value={bio.age} onChange={handleChange} placeholder="age"/>
+                      {bioData.ageLock === true ? `Age: ${bioData.age}` : <><input id="age" value={bio.age} onChange={handleChange} placeholder="age"/> <button type="submit">+</button></>}
                     </div>
-                </form>            
+                </form>           
             </div>
 
             <div>

@@ -12,7 +12,8 @@ const initialState = {
     step: storedStep(),
     statsData: storedStats(),
     alignmentData: storedAlignment(),
-    backgroundData: storedBackground()   
+    backgroundData: storedBackground(),
+    bioData: storedBio()   
 }
 
 function storedStats(){
@@ -73,6 +74,15 @@ function storedBackground(){
     } else {return {}}
 }
 
+// local storage for bio data
+function storedBio(){
+    let storedBio = localStorage.getItem('bio')
+    let storedBioParsed = JSON.parse(storedBio)    
+    if (storedBioParsed) {
+        return storedBioParsed
+    } else {return {}}
+}
+
 
 const characterSlice = createSlice({
     name: 'characterSlice',
@@ -94,9 +104,7 @@ const characterSlice = createSlice({
             state.step = {...state.step, [action.payload]: true}
             localStorage.setItem('step', JSON.stringify(state.step))
             console.log(state.step)
-            // object using bracket notation to get the key from the action.payload
-            
-            
+            // object using bracket notation to get the key from the action.payload   
         },
         storeStats: (state, action) => {
             
@@ -109,6 +117,9 @@ const characterSlice = createSlice({
         },
         storeBackgroundData: (state, action) => {
             state.backgroundData = action.payload  
+        },
+        storeBioData: (state, action) => {
+            state.bioData = action.payload
         },
         reset: (state) => {
             localStorage.clear()
@@ -124,4 +135,4 @@ const characterSlice = createSlice({
 
 export default characterSlice.reducer
 
-export const { reset, completeStep, storeClassData, storeRaceData, storeStats, storeAlignment, storeBackgroundData} = characterSlice.actions
+export const { reset, completeStep, storeClassData, storeRaceData, storeStats, storeAlignment, storeBackgroundData, storeBioData} = characterSlice.actions
