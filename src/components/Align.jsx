@@ -61,10 +61,11 @@ export default function Align(){
                 <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">
                     {alignment.name} ({alignment.abbreviation}):
                 </h1>
-                <div>
+                <div className="bg-parchment m-4 shadow-strongest p-2 text-xl w-1/3 border-gray-600 border-dotted border-4 first-letter:text">
                     {alignment.desc}
-                    </div>
-                <br />
+                    
+                </div>
+                
                
                 <div className="flex">
                     <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>                    
