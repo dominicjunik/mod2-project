@@ -131,7 +131,7 @@ export default function AbilityScores(){
                                 <br />            
                                 <label htmlFor={stat.index}><Link to={`/ability-scores/${stat.index}`} state={{data: stat.url}}>{stat.name}:</Link></label>
                                 <input
-                                    className=" text-black" 
+                                    className="" 
                                     type="number"
                                     id = {stat.index}
                                     value={stats[stat.index]}
@@ -144,10 +144,13 @@ export default function AbilityScores(){
                         }
         
                         <br />
-                        <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>                     
-                        <button type="submit">
-                                Confirm
-                        </button>               
+                        <div className="flex">
+                            <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>                     
+                            <button type="submit" className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600 align-middle">
+                                    Confirm
+                            </button>  
+                        </div>
+                                     
                     
                     </form>           
 
