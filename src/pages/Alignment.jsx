@@ -34,7 +34,7 @@ export default function Alignment(){
     function loaded(){
       return (
         <div className="flex flex-col items-center">
-            <h1>Choose an Alignment:</h1>
+            <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">Choose an Alignment</h1>
             <div>
               {alignList.map( (alignment) => ( 
                 <Link key={alignment.index} to={`/alignment/${alignment.index}`} state={{data: alignment.url}}>

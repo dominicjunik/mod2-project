@@ -33,7 +33,7 @@ export default function Backgrounds(){
     function loaded(){
         return (
           <div className="flex flex-col items-center">
-            <h1>Choose a Background:</h1>
+            <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">Choose a Background</h1>
             <div>
               {backgroundList.map( (background) => (                 
                 <Link key={background.name} to={`/backgrounds/${background.slug}`} state={{data: background}}>

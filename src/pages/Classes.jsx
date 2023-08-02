@@ -37,7 +37,7 @@ export default function Classes(){
   function loaded(){
     return (
       <div className="flex flex-col items-center">
-          <h1>Choose a Class:</h1>
+          <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">Choose a Class:</h1>
           <div>
             {classList.map( (character) => ( 
                 <Link key={character.name} to={`/classes/${character.name}`} state={{data: character.url}}>
