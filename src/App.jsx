@@ -68,7 +68,7 @@ async function testApi2(){
 ////////////
 
   return (    
-      <div className='text-black bg-pixel-grey h-screen'>
+      <div className='text-black bg-pixel-grey'>
         <Nav />
         <Routes>
           <Route path="/" element={<Home />}/>
