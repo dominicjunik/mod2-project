@@ -35,10 +35,10 @@ export default function Races(){
       return (
         <div className="flex flex-col items-center">
           <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">Choose a Race</h1>
-          <div className="classBox">
+          <div className="w-[800px] flex flex-wrap items-center justify-evenly">
             {raceList.map( (race) => ( 
               <Link key={race.name} to={`/races/${race.index}`} state={{data: race.url}}>
-                <div > 
+                <div className="flex bg-darkPurple text-2xl m-4 rounded-md h-24 w-48 shadow-pop-out items-center justify-center text-orange-100 hover:bg-lightPurple hover:text-white -500 border-double border-4 border-slate-600"> 
                 {race.name} 
                 </div>
               </Link> 
