@@ -34,10 +34,10 @@ export default function Backgrounds(){
         return (
           <div className="flex flex-col items-center">
             <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">Choose a Background</h1>
-            <div>
+            <div className="w-1/2 flex flex-wrap items-center justify-evenly">
               {backgroundList.map( (background) => (                 
                 <Link key={background.name} to={`/backgrounds/${background.slug}`} state={{data: background}}>
-                  <div > 
+                  <div className="flex bg-secondary text-xl m-4 rounded-md h-12 px-2 shadow-pop-out items-center justify-center text-orange-100 hover:bg-primary hover:text-white -500 border-double border-4 border-slate-600"> 
                   {background.name} 
                   </div>
                 </Link> 

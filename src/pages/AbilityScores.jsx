@@ -121,17 +121,18 @@ export default function AbilityScores(){
             <div className="flex flex-col items-center">
                 <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">Ability Scores</h1>                                 
                 <div className="flex flex-col items-center content-around">
-                <div>
-                    Enter scores manually or <button onClick={()=>rollStats()}>Roll!</button>  to randomly generate
+                    
+                <div className="bg-parchment shadow-strongest p-2 text-xl border-gray-600 border-dotted border-4">
+                    Enter scores manually or <button onClick={()=>rollStats()} className="text-black hover:text-blueNCS hover:bg-blue-50 font-medium border-2 border-black p-1 rounded-md bg-white">Roll</button>  to randomly generate
                 </div> 
-                    <form onSubmit={handleSubmit}>  
+                    <form onSubmit={handleSubmit} >  
 
                         {statsList.map( (stat)=> ( 
-                            <div key={stat.index} className="w-max">
+                            <div key={stat.index} className="flex bg-parchment shadow-strongest m-4 p-2 text-xl border-gray-600 border-dotted border-4 justify-between">
                                 <br />            
-                                <label htmlFor={stat.index}><Link to={`/ability-scores/${stat.index}`} state={{data: stat.url}}>{stat.name}:</Link></label>
+                                <label htmlFor={stat.index}><Link to={`/ability-scores/${stat.index}`} state={{data: stat.url}}><p className="pr-4 text-blue-700 hover:text-blueNCS font-medium">{stat.name}:</p></Link></label>
                                 <input
-                                    className="" 
+                                    className="flex text-right w-32 font-medium" 
                                     type="number"
                                     id = {stat.index}
                                     value={stats[stat.index]}
@@ -144,7 +145,7 @@ export default function AbilityScores(){
                         }
                         <br />
                         
-                        <div className="flex">
+                        <div className="flex justify-center">
                             <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>                     
                             <button type="submit" className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600 align-middle">
                                     Confirm

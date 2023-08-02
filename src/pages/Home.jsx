@@ -212,12 +212,12 @@ export default function Home() {
                 <div>
                     <form onSubmit={handleSubmit} id='name'>
                         <div>                        
-                            {bioData.nameLock === true ? `Name: ${bioData.name}` : <><input id="name" value={bio.name} onChange={handleChange} placeholder="name" /> <button type="submit" id='name'>+</button></>}
+                            {bioData.nameLock === true ? `${bioData.name}` : <><input id="name" value={bio.name} onChange={handleChange} placeholder="name" /> <button type="submit" id='name'>+</button></>}
                         </div>
                     </form>
                     <form onSubmit={handleSubmit} id='age'>
                         <div>
-                        {bioData.ageLock === true ? `Age: ${bioData.age}` : <><input id="age" value={bio.age} onChange={handleChange} placeholder="age"/> <button type="submit">+</button></>}
+                        {bioData.ageLock === true ? `${bioData.age}` : <><input id="age" value={bio.age} onChange={handleChange} placeholder="age"/> <button type="submit">+</button></>}
                         </div>
                     </form>           
                 </div>

@@ -38,7 +38,7 @@ export default function Races(){
           <div className="w-[800px] flex flex-wrap items-center justify-evenly">
             {raceList.map( (race) => ( 
               <Link key={race.name} to={`/races/${race.index}`} state={{data: race.url}}>
-                <div className="flex bg-darkPurple text-2xl m-4 rounded-md h-24 w-48 shadow-pop-out items-center justify-center text-orange-100 hover:bg-lightPurple hover:text-white -500 border-double border-4 border-slate-600"> 
+                <div className="flex bg-secondary text-2xl m-4 rounded-md h-24 w-48 shadow-pop-out items-center justify-center text-orange-100 hover:bg-primary hover:text-white -500 border-double border-4 border-slate-600"> 
                 {race.name} 
                 </div>
               </Link> 
