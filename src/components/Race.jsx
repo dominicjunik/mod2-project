@@ -70,8 +70,9 @@ export default function Race(){
     function displayRace() {
         return(
             <div className="flex flex-col items-center">
+                <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">{race.name}</h1>
                 <div>
-                    <h1>{race.name}</h1>
+                    
                     <div>Size: <br/> {race.size_description}</div>
                     <div>Speed: <br/> {race.speed}</div>
                     <div>Ability bonus: </div>

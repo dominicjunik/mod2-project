@@ -96,8 +96,9 @@ export default function Class(){
     function displayCharacter() {
         return(
             <div className="flex flex-col items-center">
-                <div >
-                    <h1>{character.name}</h1>
+                <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">{character.name}</h1>
+                <div className="flex flex-col items-center">
+                    
                     <div>Hit dice: {character.hit_die}</div>
                     <div>
                         <div>Proficiencies:</div>

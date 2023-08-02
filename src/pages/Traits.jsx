@@ -38,7 +38,7 @@ export default function Traits(){
  function displayTrait(){
     return (
         <div className="flex flex-col items-center">
-            <h1>{trait.name}</h1>
+            <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">{trait.name}</h1>
             <p>{trait.desc}</p>             
             {trait.trait_specific ? subTraits() : null} 
             <button onClick={()=> navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>

@@ -38,8 +38,8 @@ export default function Ability(){
     // for conditional renderering
     function displayAbility(){
         return (
-            <div>
-                <h1>{ability.full_name}({ability.name}):</h1>
+            <div className="flex flex-col items-center">
+                <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">{ability.full_name}({ability.name}):</h1>
                 <div>{ability.desc[0]}</div>
                 <br />
                 <h2>Game Mechanics:</h2>

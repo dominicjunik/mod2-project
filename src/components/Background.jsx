@@ -31,7 +31,7 @@ export default function Background(){
             <div className="flex flex-col items-center">
                 
                 <div className="flex flex-col items-center">
-                    <h1>{data.name}</h1>
+                    <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">{data.name}</h1>
                     { data.desc.includes('|') ? null : <div>{data.desc}</div>}                    
                 </div>
                                  
