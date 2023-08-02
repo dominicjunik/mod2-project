@@ -202,89 +202,93 @@ export default function Home() {
 
    
     return (
-        <div className="bg-parchment w-96 shadow-pop-out">
-            <h1>D&D API CHARACTER CREATOR</h1>
+        <div className="flex flex-col items-center">
+            <h1 className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100">D&D API CHARACTER CREATOR</h1>
 
-            {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div>NEXT STEP</div></Link> : <Link to="/races"> <div>START</div></Link>)}
+            {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:text-white hover:bg-secondary border-double border-4 border-slate-600">NEXT STEP</div></Link> : <Link to="/races"> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:text-white hover:bg-secondary border-double border-4 border-slate-600">START</div></Link>)}
             
-            <h2>Your Character:</h2>
+            <h2 className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 ">Your Character:</h2>
+            <div className="bg-parchment w-1/2 shadow-pop-out p-7 ">
+                <div>
+                    <form onSubmit={handleSubmit} id='name'>
+                        <div>                        
+                            {bioData.nameLock === true ? `Name: ${bioData.name}` : <><input id="name" value={bio.name} onChange={handleChange} placeholder="name" /> <button type="submit" id='name'>+</button></>}
+                        </div>
+                    </form>
+                    <form onSubmit={handleSubmit} id='age'>
+                        <div>
+                        {bioData.ageLock === true ? `Age: ${bioData.age}` : <><input id="age" value={bio.age} onChange={handleChange} placeholder="age"/> <button type="submit">+</button></>}
+                        </div>
+                    </form>           
+                </div>
 
-            <div>
-                <form onSubmit={handleSubmit} id='name'>
-                    <div>                        
-                        {bioData.nameLock === true ? `Name: ${bioData.name}` : <><input id="name" value={bio.name} onChange={handleChange} placeholder="name" /> <button type="submit" id='name'>+</button></>}
-                    </div>
-                </form>
-                <form onSubmit={handleSubmit} id='age'>
+                <div>
+                    {raceData.name} {classData.name}
+                </div>
+
+                <div>
+                    CHA: {displayStats.cha} CON: {displayStats.con} DEX: {displayStats.dex}  INT: {displayStats.int} STR: {displayStats.str}  WIS: {displayStats.wis}
+                </div>
+
+                <div>
+                    Speed: {raceData.speed}ft
+                </div>
+
+                <div>
+                    Size: {raceData.size}
+                </div>
+
+                <div>
+                    Languages: {raceData.languages ? displayLang() : null}
+                </div>
+
+                <div>
+                    Hitpoints: {bio.hp} / {bio.hp}
+                </div>
+                
+                <div>
+                    {alignmentData.name} ({alignmentData.abbreviation})
+                </div>
+
+                <div>
+                    {backgroundData.name}
+                </div>
+
+                <div>
+                    {classData.spellcasting ? `Spellcasting (${classData.spellcasting.spellcasting_ability.name})`  : null}
+                </div>
+
+                <div>
+                    {classData.saving_throws ? `Saving Throws: ${classData.saving_throws[0].name} + ${classData.saving_throws[1].name}` : null}
+                </div>
+
+                <div>                  
                     <div>
-                      {bioData.ageLock === true ? `Age: ${bioData.age}` : <><input id="age" value={bio.age} onChange={handleChange} placeholder="age"/> <button type="submit">+</button></>}
+                        <div>
+                            Traits:
+                        </div>
+                        <div>
+                            {raceData ? renderTraits() : null}
+                        </div>
                     </div>
-                </form>           
-            </div>
+                </div>  
 
-            <div>
-                {raceData.name} {classData.name}
-            </div>
-
-            <div>
-                CHA: {displayStats.cha} CON: {displayStats.con} DEX: {displayStats.dex}  INT: {displayStats.int} STR: {displayStats.str}  WIS: {displayStats.wis}
-            </div>
-
-            <div>
-                Speed: {raceData.speed}ft
-            </div>
-
-            <div>
-                Size: {raceData.size}
-            </div>
-
-            <div>
-                Languages: {raceData.languages ? displayLang() : null}
-            </div>
-
-            <div>
-                Hitpoints: {bio.hp} / {bio.hp}
+                <div>                  
+                    <div>
+                        <div>
+                            Equipment:
+                        </div>
+                        <div>
+                            {classData ? renderStartingEquipment() : null}
+                        </div>
+                    </div>
+                </div>  
             </div>
             
-            <div>
-                {alignmentData.name} ({alignmentData.abbreviation})
+            <div className="bg-primary text-3xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary border-double border-4 border-slate-600">
+                <button onClick={(()=>{dispatch(reset())})}>reset</button>
             </div>
-
-            <div>
-                {backgroundData.name}
-            </div>
-
-            <div>
-                 {classData.spellcasting ? `Spellcasting (${classData.spellcasting.spellcasting_ability.name})`  : null}
-            </div>
-
-            <div>
-                {classData.saving_throws ? `Saving Throws: ${classData.saving_throws[0].name} + ${classData.saving_throws[1].name}` : null}
-            </div>
-
-            <div>                  
-                <div>
-                    <div>
-                        Traits:
-                    </div>
-                    <div>
-                        {raceData ? renderTraits() : null}
-                    </div>
-                </div>
-            </div>  
-
-            <div>                  
-                <div>
-                    <div>
-                        Equipment:
-                    </div>
-                    <div>
-                        {classData ? renderStartingEquipment() : null}
-                    </div>
-                </div>
-            </div>  
-
-            <button onClick={(()=>{dispatch(reset())})}>reset</button>
+            
             
             
             
