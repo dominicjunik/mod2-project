@@ -123,7 +123,7 @@ export default function AbilityScores(){
                 <div className="flex flex-col items-center content-around">
                     
                 <div className="bg-parchment shadow-strongest p-2 text-xl border-gray-600 border-dotted border-4">
-                    Enter scores manually or <button onClick={()=>rollStats()} className="text-black hover:text-blueNCS hover:bg-blue-50 font-medium border-2 border-black p-1 rounded-md bg-white">Roll</button>  to randomly generate
+                    Enter scores manually or <button onClick={()=>rollStats()} className="text-black shadow-pop-out hover:text-blueNCS hover:bg-blue-50 font-medium border-2 border-black p-1 rounded-md bg-white">Roll</button>  to randomly generate
                 </div> 
                     <form onSubmit={handleSubmit} >  
 
