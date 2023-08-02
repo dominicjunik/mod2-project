@@ -51,18 +51,18 @@ export default function Race(){
     //function to display the ability scores  and link the attribute to the ability score page -> the map is a mess but im not sure how to make it prettier
     function renderAbilityScores(){
         return (
-            race.ability_bonuses.map((ability)=>(<div key={ability.ability_score.name}><Link key={ability.ability_score.index} to={`/ability-scores/${ability.ability_score.index}`} state={{data: ability.ability_score.url}}>{ability.ability_score.name}</Link> +{ability.bonus}</div>))
+            race.ability_bonuses.map((ability)=>(<div key={ability.ability_score.name}><Link key={ability.ability_score.index} to={`/ability-scores/${ability.ability_score.index}`} state={{data: ability.ability_score.url}} className=" text-blue-700 hover:text-blueNCS font-medium">{ability.ability_score.name}</Link> +{ability.bonus}</div>))
         )
     }
 
     function renderStartingProf(){
         return (
-            race.starting_proficiencies.map((prof)=><div key={prof.index}>{prof.name}</div>)
+            race.starting_proficiencies.map((prof)=><p key={prof.index}>{prof.name}</p>)
         )
     }
     
     function renderTraits(){
-        return ( race.traits.map( (trait)=> <Link key={trait.index} to={`/traits/${trait.index}`} state={{data: trait.url}}><div key={trait.index}>{trait.name}</div> </Link>))
+        return ( race.traits.map( (trait)=> <Link key={trait.index} to={`/traits/${trait.index}`} state={{data: trait.url}}><p key={trait.index} className="pr-4 text-blue-700 hover:text-blueNCS">{trait.name}</p> </Link>))
     }
  // 
     
@@ -71,16 +71,16 @@ export default function Race(){
         return(
             <div className="flex flex-col items-center">
                 <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">{race.name}</h1>
-                <div>
-                    
-                    <div>Size: <br/> {race.size_description}</div>
-                    <div>Speed: <br/> {race.speed}</div>
-                    <div>Ability bonus: </div>
+                <div className="flex w-1/2 bg-parchment shadow-strongest m-4 p-2 text-xl border-gray-600 border-dotted border-4 flex-wrap flex-col">
+                
+                    <div><p className="bg-primary text-white pl-1">Size:</p> {race.size_description}</div>
+                    <div><p className="bg-primary text-white pl-1">Speed:</p> {race.speed}</div>
+                    <div><p className="bg-primary text-white pl-1">Ability Bonus:</p></div>
                     {renderAbilityScores()}
-                    <div>Alignment: <br/> {race.alignment} </div>
-                    <div>Languages: <br/> {race.language_desc} </div>
-                    <div>Starting Proficiencies: <br/> {race.starting_proficiencies.length > 0 ? renderStartingProf() : 'none'}</div>
-                    <div>Starting Traits: <br/> {race.traits.length > 0 ? renderTraits() : 'none'}</div>
+                    <div><p className="bg-primary text-white pl-1">Alignment:</p> {race.alignment} </div>
+                    <div><p className="bg-primary text-white pl-1">Languages:</p> {race.language_desc} </div>
+                    <div><p className="bg-primary text-white pl-1">Starting Proficiencies:</p> {race.starting_proficiencies.length > 0 ? renderStartingProf() : 'none'}</div>
+                    <div><p className="bg-primary text-white pl-1">Starting Traits:</p> {race.traits.length > 0 ? renderTraits() : 'none'}</div>
                 </div>
                               
                 
