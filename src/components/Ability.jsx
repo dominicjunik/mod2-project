@@ -44,7 +44,7 @@ export default function Ability(){
                 <br />
                 <h2>Game Mechanics:</h2>
                 <div>{ability.desc[1]}</div>               
-                <button onClick={()=> navigate(-1)}>back</button>
+                <button onClick={()=> navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>
             </div>
             )
     }

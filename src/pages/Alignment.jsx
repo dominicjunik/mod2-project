@@ -44,7 +44,7 @@ export default function Alignment(){
                 </Link> 
               ) )}
             </div>
-            <button onClick={()=>navigate(-1)}>Back</button>
+            <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>
         </div>
       )
     }

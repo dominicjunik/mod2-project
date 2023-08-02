@@ -205,7 +205,7 @@ export default function Home() {
         <div className="flex flex-col items-center">
             <h1 className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100">D&D API CHARACTER CREATOR</h1>
 
-            {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:text-white hover:bg-secondary border-double border-4 border-slate-600">NEXT STEP</div></Link> : <Link to="/races"> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:text-white hover:bg-secondary border-double border-4 border-slate-600">START</div></Link>)}
+            {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600">NEXT STEP</div></Link> : <Link to="/races"> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600">START</div></Link>)}
             
             <h2 className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 ">Your Character:</h2>
             <div className="bg-parchment w-1/2 shadow-pop-out p-7 ">
@@ -285,9 +285,9 @@ export default function Home() {
                 </div>  
             </div>
             
-            <div className="bg-primary text-3xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary border-double border-4 border-slate-600">
-                <button onClick={(()=>{dispatch(reset())})}>reset</button>
-            </div>
+            
+            <button onClick={(()=>{dispatch(reset())})} className="flex bg-primary text-3xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-black hover:text-red-500 hover:border-red-500 border-double border-4 border-slate-600 align-middle">reset</button>
+            
             
             
             
