@@ -203,11 +203,11 @@ export default function Home() {
    
     return (
         <div className="flex flex-col items-center">
-            <h1 className="bg-primary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">D&D API CHARACTER CREATOR</h1>
+            <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">D&D API CHARACTER CREATOR</h1>
 
-            {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600">NEXT STEP</div></Link> : <Link to="/races"> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600">START</div></Link>)}
+            {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div className="bg-secondary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600">NEXT STEP</div></Link> : <Link to="/races"> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-white hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600">START</div></Link>)}
             
-            <h2 className="bg-primary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100 ">Your Character:</h2>
+            <h2 className="bg-secondary text-3xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100 ">Your Character:</h2>
             <div className="bg-parchment w-1/2 shadow-strongest p-7 border-gray-600 border-dotted border-4">
                 <div>
                     <form onSubmit={handleSubmit} id='name'>
@@ -286,7 +286,7 @@ export default function Home() {
             </div>
             
             
-            <button onClick={(()=>{dispatch(reset())})} className="flex bg-primary text-3xl m-4 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-black hover:text-red-500 hover:border-red-500 border-double border-4 border-slate-600 align-middle">reset</button>
+            <button onClick={(()=>{dispatch(reset())})} className="flex bg-primary text-3xl m-4 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-black hover:text-white hover:border-red-500 border-double border-4 border-slate-600 align-middle">reset</button>
             
             
             

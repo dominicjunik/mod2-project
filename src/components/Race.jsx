@@ -69,7 +69,7 @@ export default function Race(){
     // displays the data for the chosen character class
     function displayRace() {
         return(
-            <div>
+            <div className="flex flex-col items-center">
                 <div>
                     <h1>{race.name}</h1>
                     <div>Size: <br/> {race.size_description}</div>

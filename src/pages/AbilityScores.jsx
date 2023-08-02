@@ -118,7 +118,7 @@ export default function AbilityScores(){
     // functions to map the data to the page
     function loaded(){
         return ( 
-            <div>
+            <div className="flex flex-col items-center">
                 <h1>Ability Scores:</h1>
                 <br />
                 enter scores manually or <button onClick={()=>rollStats()}>Roll!</button>  to randomly generate

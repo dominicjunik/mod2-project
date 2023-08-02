@@ -95,8 +95,8 @@ export default function Class(){
     // displays the data for the chosen character class
     function displayCharacter() {
         return(
-            <div>
-                <div>
+            <div className="flex flex-col items-center">
+                <div >
                     <h1>{character.name}</h1>
                     <div>Hit dice: {character.hit_die}</div>
                     <div>

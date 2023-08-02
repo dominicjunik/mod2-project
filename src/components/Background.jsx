@@ -28,9 +28,9 @@ export default function Background(){
         console.log('it does not include backslash n:')
         console.log(!(data.desc.includes('|')))
         return(
-            <div>
+            <div className="flex flex-col items-center">
                 
-                <div>
+                <div className="flex flex-col items-center">
                     <h1>{data.name}</h1>
                     { data.desc.includes('|') ? null : <div>{data.desc}</div>}                    
                 </div>

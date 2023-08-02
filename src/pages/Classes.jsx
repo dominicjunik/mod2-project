@@ -36,7 +36,7 @@ export default function Classes(){
 
   function loaded(){
     return (
-      <div>
+      <div className="flex flex-col items-center">
           <h1>Choose a Class:</h1>
           <div>
             {classList.map( (character) => ( 

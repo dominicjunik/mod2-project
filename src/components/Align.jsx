@@ -57,7 +57,7 @@ export default function Align(){
     // for conditional renderering
     function displayAlignment(){
         return (
-            <div>
+            <div className="flex flex-col items-center">
                 <h1>
                     {alignment.name} ({alignment.abbreviation}):
                 </h1>

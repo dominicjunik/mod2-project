@@ -32,7 +32,7 @@ export default function Backgrounds(){
     
     function loaded(){
         return (
-          <div>
+          <div className="flex flex-col items-center">
             <h1>Choose a Background:</h1>
             <div>
               {backgroundList.map( (background) => (                 

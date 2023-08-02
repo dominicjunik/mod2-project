@@ -33,7 +33,7 @@ export default function Alignment(){
   
     function loaded(){
       return (
-        <div>
+        <div className="flex flex-col items-center">
             <h1>Choose an Alignment:</h1>
             <div>
               {alignList.map( (alignment) => ( 

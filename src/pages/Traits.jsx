@@ -37,7 +37,7 @@ export default function Traits(){
  // for conditional renderering
  function displayTrait(){
     return (
-        <div>
+        <div className="flex flex-col items-center">
             <h1>{trait.name}</h1>
             <p>{trait.desc}</p>             
             {trait.trait_specific ? subTraits() : null} 
