@@ -24,7 +24,8 @@ export default {
         hunterGreen: 'rgb(62, 101, 80)',
         brunsGreen: 'rgb(47, 76, 60)',
         darkPurple: 'rgb(75, 39, 81)',
-        lightPurple: 'rgb(94, 49, 101)'
+        lightPurple: 'rgb(94, 49, 101)',
+        parchmentSoft: 'rgba(255, 237, 213, 0.616)'
       },      
       boxShadow: {
         'stone': 'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
@@ -75,8 +76,13 @@ export default {
       },
       gridColumn: {
         'span-16': 'span 16 / span 16',
+      },
+      gridRow: {
+        'span-8': 'span 8 / span 8',
+        'span-9': 'span 9 / span 9',
+        'span-10': 'span 10 / span 10',
       }
-    },
+    },    
   },
   plugins: [],
 }

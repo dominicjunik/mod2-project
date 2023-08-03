@@ -134,7 +134,7 @@ export default function Home() {
     function renderTraits(){
         // prevents the page from breaking if theres no data        
         if(raceData.traits  === undefined){return}
-        return ( raceData.traits.map( (trait)=> <Link key={trait.index} to={`/traits/${trait.index}`} state={{data: trait.url}}><div key={trait.index}>{trait.name}</div> </Link>))
+        return ( raceData.traits.map( (trait)=> <Link key={trait.index} to={`/traits/${trait.index}`} state={{data: trait.url}}><div key={trait.index} className="pr-4 text-blue-700 hover:text-blueNCS font-medium">{trait.name}</div> </Link>))
     }
 
     // i tried conditionally rendering INSIDE this function because all classes have starting equipment but they might not all have options
@@ -309,46 +309,38 @@ export default function Home() {
                 <div className="col-span-2 text-center bg-primary flex justify-center items-center text-white font-bold">STR</div>
                 <div className="col-span-2 text-center bg-primary flex justify-center items-center text-white font-bold">WIS</div>
                 <div className="col-start-1 col-end-5 row-span-2 bg-primary justify-center items-center flex"><p className="text-slate-200 text-xl">{raceData.name} {classData.name}</p></div>
-                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.cha}</div>
-                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.con}</div>
-                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.dex}</div>
-                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.int}</div>
-                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.str}</div>
-                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.wis}</div>
+                <div className="col-span-2 row-span-2 bg-parchmentSoft flex justify-center items-center text-xl font-bold">{displayStats.cha}</div>
+                <div className="col-span-2 row-span-2 bg-parchmentSoft flex justify-center items-center text-xl font-bold">{displayStats.con}</div>
+                <div className="col-span-2 row-span-2 bg-parchmentSoft flex justify-center items-center text-xl font-bold">{displayStats.dex}</div>
+                <div className="col-span-2 row-span-2 bg-parchmentSoft flex justify-center items-center text-xl font-bold">{displayStats.int}</div>
+                <div className="col-span-2 row-span-2 bg-parchmentSoft flex justify-center items-center text-xl font-bold">{displayStats.str}</div>
+                <div className="col-span-2 row-span-2 bg-parchmentSoft flex justify-center items-center text-xl font-bold">{displayStats.wis}</div>
+                <div className="col-span-4 col-start-1 bg-primary justify-center items-center flex text-white">{alignmentData.name} ({alignmentData.abbreviation})</div>
                 <div className="col-span-4 col-start-1 bg-primary justify-center items-center flex text-white">Size</div>
-                <div className="col-span-4 col-start-1  bg-orange-100 flex justify-center items-center">{raceData.size}</div>
+                <div className="col-span-4 col-start-1  bg-parchmentSoft flex justify-center items-center">{raceData.size}</div>
                 <div className="col-start-5 col-end-17 row-start-5 bg-primary text-white pr-2 justify-center items-center flex"> {classData.spellcasting ? `Spellcasting (${classData.spellcasting.spellcasting_ability.name})`  : null}</div>
                 <div className="col-start-5 col-end-17 row-start-6 bg-primary text-white pr-2 justify-center items-center flex">{classData.saving_throws ? `Saving Throws: ${classData.saving_throws[0].name} + ${classData.saving_throws[1].name}` : null}</div>
                 <div className="col-span-2 col-start-1  row-span-1 bg-primary justify-center items-center flex text-white">Age</div>
-                <div className="col-span-2  row-span-1 col-start-3 row-start-7 bg-primary justify-center items-center flex text-white">Speed</div>
-                <div className="col-span-2  row-span-1 col-start-3 row-start-8 bg-orange-100 justify-center items-center flex">{raceData.speed}ft</div>
-                <div className="col-span-2 col-start-1  row-span-1 bg-orange-100 justify-center items-center flex">
+                <div className="col-span-2  row-span-1 col-start-3 row-start-8 bg-primary justify-center items-center flex text-white">Speed</div>
+                <div className="col-span-2  row-span-1 col-start-3 row-start-9 bg-parchmentSoft justify-center items-center flex">{raceData.speed}ft</div>
+                <div className="col-span-2 col-start-1  row-span-1 bg-parchmentSoft justify-center items-center flex">
                     <form onSubmit={handleSubmit} id='age' className="h-max">                          
                         {bioData.ageLock === true ? <p className=" flex justify-center items-center">{bioData.age}</p> : <div className="flex justify-center"><input id="age" value={bio.age} onChange={handleChange} placeholder="age" className="w-2/3"></input> <button type="submit" id='name' className="col-start-5 hover:text-blueNCS">+</button></div>}           
                     </form>
                 </div>
-                 <div className="col-start-5 col-end-17 row-start-7 bg-primary text-white pr-2 justify-center items-center flex">{alignmentData.name} ({alignmentData.abbreviation})</div>
                 
+                <div className="col-start-5 col-end-11 row-start-7 bg-primary text-white pr-2 justify-center items-center flex">Traits</div>
+                <div className="col-start-5 col-end-11 row-start-8 row-span-8 bg-parchmentSoft flex flex-col items-center justify-center"><div>{raceData ? renderTraits() : null}</div></div>
+                <div className="col-start-11 col-end-17 row-start-7 bg-primary text-white pr-2 justify-center items-center flex">Equipment</div>
+                <div className="col-start-11 col-end-17 row-start-8 row-span-8 bg-parchmentSoft flex flex-col items-center justify-center"><div className="p-2">{classData ? renderStartingEquipment() : null}</div></div>
+                <div className="col-span-4 col-start-1 bg-primary justify-center items-center flex text-white">Background</div>
+                <div className="col-span-4 col-start-1  bg-parchmentSoft flex justify-center items-center">{backgroundData.name}</div>
+                <div className="col-span-4 col-start-1 bg-primary justify-center items-center flex text-white">Languages</div>
+                <div className="col-span-4 col-start-1 row-span-3  bg-parchmentSoft flex justify-center items-center">{raceData.languages ? displayLang() : null}</div>
+                <div className="bg-secondary col-start-1 col-end-17 flex items-center justify-end text-blueNCS pr-3">created by dominic junik</div>
                 
             </div>
-
-            {/* BACKUP PLAN FLEX GROSS*/}
-            <div className="w-4/5 bg-parchment h-screen flex">
-                <div className="w-1/3 bg-cyan-100 m-3 flex flex-col ">
-                    <p className="text-center">One third Div</p>
-                    <div className="flex">
-                        <div className="w-1/2 bg-orange-200">
-                            half
-                        </div>
-                        <div className="w-1/2 bg-orange-200">
-                            half
-                        </div>
-                    </div>
-                </div>
-                <div className="w-2/3 bg-cyan-100 m-3">
-                    TWO third Div
-                </div>
-            </div>
+           
             
             
         </div>
