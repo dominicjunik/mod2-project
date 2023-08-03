@@ -58,6 +58,7 @@ The data from this API is fragmented across many pages
 ### Not Yet Implemented: 
 - Pictures: I would have liked to add a profile picture for each race and a class icon to display on the main page but I didnt have time to create them myself and couldn't find free resources online.
 - Responsiveness: The scope of this project was very large for the time frame and I wasn't able to try and make things responsive. However, as I was learning tailwind I discovered lots of functionality for this that I am excited to try in my next project. 
+- A "Create Random Character" button on the home screen using the data from the API downloaded and then sorted through due to the limitations of the data structure online.
 
 
 ## Credits
