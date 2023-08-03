@@ -61,10 +61,9 @@ export default function Align(){
                 <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">
                     {alignment.name} ({alignment.abbreviation}):
                 </h1>
-                <div className="bg-parchment m-4 shadow-strongest p-2 text-xl w-1/3 border-gray-600 border-dotted border-4 first-letter:text">
+                <p className="bg-parchment m-4 shadow-strongest p-2 text-xl w-1/3 border-gray-600 border-dotted border-4 first-letter:text">
                     {alignment.desc}
-                    
-                </div>
+                </p>
                 
                
                 <div className="flex">

@@ -55,7 +55,7 @@ export default function Class(){
 
     function renderSavingThrows(){
         return (
-            character.saving_throws.map((save)=>(<div key={save.index}><Link key={save.name} to={`/ability-scores/${save.index}`} state={{data: save.url}}>{save.name}</Link></div>))
+            character.saving_throws.map((save)=>(<div key={save.index}><Link key={save.name} to={`/ability-scores/${save.index}`} state={{data: save.url}} className=" text-blue-700 hover:text-blueNCS font-medium">{save.name}</Link></div>))
         )
     }
 
@@ -64,7 +64,7 @@ export default function Class(){
         return (
             <div>
             {character.starting_equipment.map((option)=> <div key={option.equipment.index}> {option.quantity} {option.equipment.name} </div> )}
-            A choice of:
+            <p className="bg-primary text-white pl-1">A choice of:</p>
             {
             character.starting_equipment_options.length > 0 ? character.starting_equipment_options.map((option)=><div key={option.desc}>-{option.desc}</div>) : null
             }
@@ -74,7 +74,7 @@ export default function Class(){
     }
 
     function renderProficiencies(){
-        return(character.proficiencies.map((prof)=> <li key={prof.index}>{prof.name}</li>))
+        return(character.proficiencies.map((prof)=> <li key={prof.index} >{prof.name}</li>))
     }
 
     // attempting to make this function more readable by saving stuff in variables first
@@ -84,9 +84,9 @@ export default function Class(){
          
 
         return(
-            <div>
-                Spellcasting ({type.name}):
-                {spells.map((type)=>(<div key={type.name}>{type.name}: <br/> {type.desc.length > 1 ? type.desc.join(' ') : type.desc[0]}</div>))}
+            <div >
+                <p className="bg-secondary text-white pl-1">Spellcasting ({type.name}):</p>
+                {spells.map((type)=>(<div key={type.name}><p className="bg-primary text-white pl-1">{type.name}:</p> {type.desc.length > 1 ? type.desc.join(' ') : type.desc[0]}</div>))}
             </div>
         )
     }
@@ -97,28 +97,25 @@ export default function Class(){
         return(
             <div className="flex flex-col items-center">
                 <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">{character.name}</h1>
-                <div className="flex flex-col items-center">
-                    
-                    <div>Hit dice: {character.hit_die}</div>
-                    <div>
-                        <div>Proficiencies:</div>
+                <div className="flex items-start justify-center">
+                <div className="flex bg-parchment shadow-strongest m-4 p-2 text-xl border-gray-600 border-dotted border-4 flex-wrap flex-col">                    
+                        <p className="bg-primary text-white pl-1">Hit dice:</p>
+                        <p>{character.hit_die}</p>                       
+                        <p className="bg-primary text-white pl-1">Proficiencies:</p>
                         <ul>
                             {renderProficiencies()}
-                        </ul>                    
-                    </div> 
-                    <div>
-                        Saving Throws: <br />
-                        {renderSavingThrows()}
-                    </div>
-                    <div>
-                        Starting Equipment: <br/>
+                        </ul>                
+                        <p className="bg-primary text-white pl-1">Saving Throws:</p>
+                        {renderSavingThrows()}                                               
+                        <p className="bg-primary text-white pl-1">Starting Equipment:</p> 
                         {renderStartingEquipment()}
+                                        
                     </div>
-                    <div>
-                        {character.spellcasting ? renderMagic() : null}
-                    </div>
-
+                    
+                    {character.spellcasting ? <div className="flex bg-parchment w-1/2 shadow-strongest m-4 p-2 text-xl border-gray-600 border-dotted border-4 flex-wrap flex-col">{renderMagic()} </div> : null}
+                    
                 </div>
+                   
                      
                 <div className="flex">
                     <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>                    

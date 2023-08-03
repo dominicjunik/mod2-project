@@ -41,6 +41,7 @@ export default function Ability(){
             <div className="flex flex-col items-center">
                 <h1 className="bg-secondary text-4xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100">{ability.full_name}({ability.name}):</h1>
                 <div className="bg-parchment m-4 shadow-strongest p-2 text-xl w-1/3 border-gray-600 border-dotted border-4 first-letter:text">
+                    <p className="bg-primary text-white pl-1">Description:</p>
                     <p>{ability.desc[0]}</p>
                     <br />
                     <p className="bg-primary text-white pl-1">Game Mechanics:</p>
