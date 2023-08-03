@@ -123,7 +123,7 @@ export default function AbilityScores(){
                 <div className="flex flex-col items-center content-around">
                     
                 <div className="bg-parchment shadow-strongest p-2 text-xl border-gray-600 border-dotted border-4">
-                    Enter scores manually or <button onClick={()=>rollStats()} className="text-black shadow-pop-out hover:text-blueNCS hover:bg-blue-50 font-medium border-2 border-black p-1 rounded-md bg-white">Roll</button>  to randomly generate
+                    Enter scores manually or <button onClick={()=>rollStats()} className="text-black shadow-pop-out hover:text-blueNCS hover:bg-blue-50 font-medium border-2 border-black p-1 rounded-md bg-white transform active:scale-90 transition-transform">Roll</button>  to randomly generate
                 </div> 
                     <form onSubmit={handleSubmit} >  
 
@@ -146,8 +146,8 @@ export default function AbilityScores(){
                         <br />
                         
                         <div className="flex justify-center">
-                            <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>                     
-                            <button type="submit" className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600 align-middle">
+                            <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle transform active:scale-90 transition-transform">Back</button>                     
+                            <button type="submit" className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600 align-middle transform active:scale-90 transition-transform">
                                     Confirm
                             </button>  
                         </div>

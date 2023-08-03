@@ -38,13 +38,13 @@ export default function Alignment(){
             <div className="w-[800px] flex flex-wrap items-center justify-evenly">
               {alignList.map( (alignment) => ( 
                 <Link key={alignment.index} to={`/alignment/${alignment.index}`} state={{data: alignment.url}}>
-                  <div className="flex bg-secondary text-2xl m-4 rounded-md h-24 w-48 shadow-pop-out items-center justify-center text-orange-100 hover:bg-primary hover:text-white -500 border-double border-4 border-slate-600"> 
+                  <div className="flex bg-secondary text-2xl m-4 rounded-md h-24 w-48 shadow-pop-out items-center justify-center text-orange-100 hover:bg-primary hover:text-white -500 border-double border-4 border-slate-600 transform active:scale-90 transition-transform"> 
                   {alignment.name} 
                   </div>
                 </Link> 
               ) )}
             </div>
-            <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle">Back</button>
+            <button onClick={()=>navigate(-1)} className="flex bg-primary text-2xl m-2 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-secondary hover:text-white -500 border-double border-4 border-slate-600 align-middle transform active:scale-90 transition-transform">Back</button>
         </div>
       )
     }
