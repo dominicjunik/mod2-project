@@ -52,7 +52,7 @@ The data from this API is fragmented across many pages
 - I used the```useLocation()``` hook to pass state through react-router-dom ```<Link />```'s so the subsequent data could be fetched on the next page.
 
 - There is both a nav bar listing all the pages and a smart button that checks what steps the user has completed and directs them to the next logical step.
-- I utilized Redux and the global store to save data from each step of the process to display on the main page.
+- I utilized Redux and the global store to save data from each step of the process to display on the main page. As well as local storage to save the data to the browser.
 - The entire website was styled with the tailwind framework. This was my first time using it and while the installation was daunting, the speed at which I was able to style all the buttons and links with color changes on hover and transitions on activate was amazing. 
 - A character sheet built with grid and functions to convert data from mutiple pages into an easy to read format.
 ### Not Yet Implemented: 
