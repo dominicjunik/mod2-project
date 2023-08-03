@@ -46,6 +46,7 @@ Built in VS code
 
 
 The data from this API is fragmented across many pages 
+
 ![data sample](./src/assets/data.jpg)
 
 - I used the```useLocation()``` hook to pass state through react-router-dom ```<Link />```'s so the subsequent data could be fetched on the next page.
