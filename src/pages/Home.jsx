@@ -292,12 +292,12 @@ export default function Home() {
             <button onClick={(()=>{dispatch(reset())})} className="flex bg-primary text-3xl m-4 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-black hover:text-white hover:border-red-500 border-double border-4 border-slate-600 align-middle transform active:scale-90 transition-transform">reset</button>
             
             
-            <div className="w-3/4 grid grid-cols-16 grid-rows-13 bg-parchment shadow-strongest border-gray-600 border-dotted border-4 p-2 gap-2">
+            <div className="w-[800px] h-[600px] grid grid-cols-16 grid-rows-13 bg-parchment shadow-strongest border-gray-600 border-dotted border-4 p-2 gap-2">
             
                 <div className="col-start-1 col-end-5 row-start-1 row-end-3 justify-center items-center flex bg-secondary">
                     <form onSubmit={handleSubmit} id='name' className="h-max">
                                               
-                            {bioData.nameLock === true ? <p className="text-white text-xl">{bioData.name}</p> : <><input id="name" value={bio.name} onChange={handleChange} placeholder="name" className="w-4/5"></input> <button type="submit" id='name' className="col-start-5">+</button></>}
+                            {bioData.nameLock === true ? <p className="text-white text-2xl">{bioData.name}</p> : <div className="flex justify-center"><input id="name" value={bio.name} onChange={handleChange} placeholder="name" className="w-4/5"></input> <button type="submit" id='name' className="col-start-5">+</button></div>}
                         
                     </form>
                 </div>
