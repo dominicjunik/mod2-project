@@ -3,8 +3,8 @@
 The objective of this project was to create a website with HTML, CSS, and JavaScript using the React Library.
 
 This website uses two D&D themed API's to fetch and display character data that the user can then select through to build a character for the game.
-## Live Site
-
+### Live Deployment
+ [View Page](https://magnificent-zuccutto-9e11d8.netlify.app/)
 
 ## Motivation
 This is the final project of the second module of my Software Engineering bootcamp. 
