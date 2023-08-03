@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* this is how to apply something globally in tailwind, not in use, but cool */
+
 /* @layer base {
     a {
       @apply text-denim;

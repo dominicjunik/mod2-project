@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 import { reset, storeBioData } from "../characterSlice"
 import { useEffect, useState } from "react"
-
+import headshot from '../assets/headshot.png'
 
 
 // make a paperdoll here 
@@ -222,6 +222,7 @@ export default function Home() {
                     </form>           
                 </div>
 
+               
                 <div>
                     {raceData.name} {classData.name}
                 </div>
@@ -282,14 +283,51 @@ export default function Home() {
                             {classData ? renderStartingEquipment() : null}
                         </div>
                     </div>
-                </div>  
+                </div>
+
+              
             </div>
             
             
             <button onClick={(()=>{dispatch(reset())})} className="flex bg-primary text-3xl m-4 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-black hover:text-white hover:border-red-500 border-double border-4 border-slate-600 align-middle transform active:scale-90 transition-transform">reset</button>
             
             
+            <div className="w-3/4 grid grid-cols-16 grid-rows-13 bg-parchment shadow-strongest border-gray-600 border-dotted border-4 p-2 gap-2">
             
+                <div className="col-start-1 col-end-5 row-start-1 row-end-3 justify-center items-center flex bg-secondary">
+                    <form onSubmit={handleSubmit} id='name' className="h-max">
+                                              
+                            {bioData.nameLock === true ? <p className="text-white text-xl">{bioData.name}</p> : <><input id="name" value={bio.name} onChange={handleChange} placeholder="name" className="w-4/5"></input> <button type="submit" id='name' className="col-start-5">+</button></>}
+                        
+                    </form>
+                </div>
+                <p className="col-start-5 col-end-17 row-start-1 row-end-1 bg-secondary text-white pr-2 text-right">hitpoints 17/16</p>
+                <p className="col-span-2 text-center bg-primary">CHA</p>
+                <p className="col-span-2 text-center bg-primary">CON</p>
+                <p className="col-span-2 text-center bg-primary">DEX</p>
+                <p className="col-span-2 text-center bg-primary">INT</p>
+                <p className="col-span-2 text-center bg-primary">STR</p>
+                <p className="col-span-2 text-center bg-primary">WIS</p>
+                <p className="col-start-1 col-end-5 row-span-2 bg-primary">DRAGONBORN BARBAR</p>
+    
+            </div>
+
+            <div className="w-4/5 bg-parchment h-screen flex">
+                <div className="w-1/3 bg-cyan-100 m-3 flex flex-col ">
+                    <p className="text-center">One third Div</p>
+                    <div className="flex">
+                        <div className="w-1/2 bg-orange-200">
+                            half
+                        </div>
+                        <div className="w-1/2 bg-orange-200">
+                            half
+                        </div>
+                    </div>
+                </div>
+                <div className="w-2/3 bg-cyan-100 m-3">
+                    TWO third Div
+                </div>
+            </div>
             
             
         </div>

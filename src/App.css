@@ -2,11 +2,5 @@ html {
     /* color: white; */
     background-image: url('./assets/noise-background.png');    
     height: 100%;
-    width: 100%;
-    
-}
-
-a {
-    color: rgb(174, 164, 191);
-
+    width: 100%;    
 }

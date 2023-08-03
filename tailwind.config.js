@@ -31,6 +31,51 @@ export default {
         'pop-out': 'rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset',
         'strongest' : 'rgba(0, 0, 0, 0.56) 0px 22px 70px 4px'        
       },
+      gridTemplateColumns: {
+        '16': 'repeat(16, minmax(0, 1fr))'
+      },
+      gridTemplateRows: {
+        '13': 'repeat(16, minmax(0, 1fr))'
+      },
+      gridRowStart: {
+        '8': '8',
+        '9': '9',
+        '10': '10',
+        '11': '11',
+        '12': '12',
+        '13': '13',
+        '14' : '14',
+        '15' : '15',
+        '16' : '16'
+      },
+      gridRowEnd: {
+        '8': '8',
+        '9': '9',
+        '10': '10',
+        '11': '11',
+        '12': '12',
+        '13': '13',
+        '14' : '14',
+        '15' : '15',
+        '16' : '16'
+      },
+      gridColumnStart: {
+        '13': '13',
+        '14': '14',
+        '15': '15',
+        '16': '16',
+        '17': '17',
+      },
+      gridColumnEnd: {
+        '13': '13',
+        '14': '14',
+        '15': '15',
+        '16': '16',
+        '17': '17',
+      },
+      gridColumn: {
+        'span-16': 'span 16 / span 16',
+      }
     },
   },
   plugins: [],
