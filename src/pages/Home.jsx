@@ -297,21 +297,42 @@ export default function Home() {
                 <div className="col-start-1 col-end-5 row-start-1 row-end-3 justify-center items-center flex bg-secondary">
                     <form onSubmit={handleSubmit} id='name' className="h-max">
                                               
-                            {bioData.nameLock === true ? <p className="text-white text-2xl">{bioData.name}</p> : <div className="flex justify-center"><input id="name" value={bio.name} onChange={handleChange} placeholder="name" className="w-4/5"></input> <button type="submit" id='name' className="col-start-5">+</button></div>}
+                            {bioData.nameLock === true ? <p className="text-white text-2xl flex justify-center items-center">{bioData.name}</p> : <div className="flex justify-center"><input id="name" value={bio.name} onChange={handleChange} placeholder="name" className="w-4/5"></input> <button type="submit" id='name' className="col-start-5 text-white hover:text-blueNCS">+</button></div>}
                         
                     </form>
                 </div>
-                <p className="col-start-5 col-end-17 row-start-1 row-end-1 bg-secondary text-white pr-2 text-right">hitpoints 17/16</p>
-                <p className="col-span-2 text-center bg-primary">CHA</p>
-                <p className="col-span-2 text-center bg-primary">CON</p>
-                <p className="col-span-2 text-center bg-primary">DEX</p>
-                <p className="col-span-2 text-center bg-primary">INT</p>
-                <p className="col-span-2 text-center bg-primary">STR</p>
-                <p className="col-span-2 text-center bg-primary">WIS</p>
-                <p className="col-start-1 col-end-5 row-span-2 bg-primary">DRAGONBORN BARBAR</p>
-    
+                <div className="col-start-5 col-end-17 row-start-1 row-end-1 bg-secondary text-white pr-2 justify-end items-center flex">Hitpoints: {bio.hp} / {bio.hp}</div>
+                <div className="col-span-2 text-center bg-primary flex justify-center items-center text-white font-bold">CHA</div>
+                <div className="col-span-2 text-center bg-primary flex justify-center items-center text-white font-bold">CON</div>
+                <div className="col-span-2 text-center bg-primary flex justify-center items-center text-white font-bold">DEX</div>
+                <div className="col-span-2 text-center bg-primary flex justify-center items-center text-white font-bold">INT</div>
+                <div className="col-span-2 text-center bg-primary flex justify-center items-center text-white font-bold">STR</div>
+                <div className="col-span-2 text-center bg-primary flex justify-center items-center text-white font-bold">WIS</div>
+                <div className="col-start-1 col-end-5 row-span-2 bg-primary justify-center items-center flex"><p className="text-slate-200 text-xl">{raceData.name} {classData.name}</p></div>
+                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.cha}</div>
+                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.con}</div>
+                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.dex}</div>
+                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.int}</div>
+                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.str}</div>
+                <div className="col-span-2 row-span-2 bg-orange-100 flex justify-center items-center text-xl font-bold">{displayStats.wis}</div>
+                <div className="col-span-4 col-start-1 bg-primary justify-center items-center flex text-white">Size</div>
+                <div className="col-span-4 col-start-1  bg-orange-100 flex justify-center items-center">{raceData.size}</div>
+                <div className="col-start-5 col-end-17 row-start-5 bg-primary text-white pr-2 justify-center items-center flex"> {classData.spellcasting ? `Spellcasting (${classData.spellcasting.spellcasting_ability.name})`  : null}</div>
+                <div className="col-start-5 col-end-17 row-start-6 bg-primary text-white pr-2 justify-center items-center flex">{classData.saving_throws ? `Saving Throws: ${classData.saving_throws[0].name} + ${classData.saving_throws[1].name}` : null}</div>
+                <div className="col-span-2 col-start-1  row-span-1 bg-primary justify-center items-center flex text-white">Age</div>
+                <div className="col-span-2  row-span-1 col-start-3 row-start-7 bg-primary justify-center items-center flex text-white">Speed</div>
+                <div className="col-span-2  row-span-1 col-start-3 row-start-8 bg-orange-100 justify-center items-center flex">{raceData.speed}ft</div>
+                <div className="col-span-2 col-start-1  row-span-1 bg-orange-100 justify-center items-center flex">
+                    <form onSubmit={handleSubmit} id='age' className="h-max">                          
+                        {bioData.ageLock === true ? <p className=" flex justify-center items-center">{bioData.age}</p> : <div className="flex justify-center"><input id="age" value={bio.age} onChange={handleChange} placeholder="age" className="w-2/3"></input> <button type="submit" id='name' className="col-start-5 hover:text-blueNCS">+</button></div>}           
+                    </form>
+                </div>
+                 <div className="col-start-5 col-end-17 row-start-7 bg-primary text-white pr-2 justify-center items-center flex">{alignmentData.name} ({alignmentData.abbreviation})</div>
+                
+                
             </div>
 
+            {/* BACKUP PLAN FLEX GROSS*/}
             <div className="w-4/5 bg-parchment h-screen flex">
                 <div className="w-1/3 bg-cyan-100 m-3 flex flex-col ">
                     <p className="text-center">One third Div</p>
