@@ -207,92 +207,8 @@ export default function Home() {
 
             {step.race && step.class && step.abilityScore && step.alignment && step.background ? null : (step.race ? <Link to={journey()}> <div className="bg-secondary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-orange-100 hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600 transform active:scale-90 transition-transform">NEXT STEP</div></Link> : <Link to="/races"> <div className="bg-primary text-4xl m-2 rounded-md  shadow-pop-out p-3 text-white hover:bg-gold hover:border-yellow-100 hover:text-yellow-100 border-double border-4 border-slate-600 transform active:scale-90 transition-transform">START</div></Link>)}
             
-            <h2 className="bg-secondary text-3xl m-4 rounded-md  shadow-pop-out p-3 text-orange-100 ">Your Character:</h2>
-            <div className="bg-parchment w-1/2 shadow-strongest p-7 border-gray-600 border-dotted border-4">
-                <div>
-                    <form onSubmit={handleSubmit} id='name'>
-                        <div>                        
-                            {bioData.nameLock === true ? `${bioData.name}` : <><input id="name" value={bio.name} onChange={handleChange} placeholder="name" /> <button type="submit" id='name'>+</button></>}
-                        </div>
-                    </form>
-                    <form onSubmit={handleSubmit} id='age'>
-                        <div>
-                        {bioData.ageLock === true ? `${bioData.age}` : <><input id="age" value={bio.age} onChange={handleChange} placeholder="age"/> <button type="submit">+</button></>}
-                        </div>
-                    </form>           
-                </div>
-
-               
-                <div>
-                    {raceData.name} {classData.name}
-                </div>
-
-                <div>
-                    CHA: {displayStats.cha} CON: {displayStats.con} DEX: {displayStats.dex}  INT: {displayStats.int} STR: {displayStats.str}  WIS: {displayStats.wis}
-                </div>
-
-                <div>
-                    Speed: {raceData.speed}ft
-                </div>
-
-                <div>
-                    Size: {raceData.size}
-                </div>
-
-                <div>
-                    Languages: {raceData.languages ? displayLang() : null}
-                </div>
-
-                <div>
-                    Hitpoints: {bio.hp} / {bio.hp}
-                </div>
-                
-                <div>
-                    {alignmentData.name} ({alignmentData.abbreviation})
-                </div>
-
-                <div>
-                    {backgroundData.name}
-                </div>
-
-                <div>
-                    {classData.spellcasting ? `Spellcasting (${classData.spellcasting.spellcasting_ability.name})`  : null}
-                </div>
-
-                <div>
-                    {classData.saving_throws ? `Saving Throws: ${classData.saving_throws[0].name} + ${classData.saving_throws[1].name}` : null}
-                </div>
-
-                <div>                  
-                    <div>
-                        <div>
-                            Traits:
-                        </div>
-                        <div>
-                            {raceData ? renderTraits() : null}
-                        </div>
-                    </div>
-                </div>  
-
-                <div>                  
-                    <div>
-                        <div>
-                            Equipment:
-                        </div>
-                        <div>
-                            {classData ? renderStartingEquipment() : null}
-                        </div>
-                    </div>
-                </div>
-
-              
-            </div>
-            
-            
-            <button onClick={(()=>{dispatch(reset())})} className="flex bg-primary text-3xl m-4 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-black hover:text-white hover:border-red-500 border-double border-4 border-slate-600 align-middle transform active:scale-90 transition-transform">reset</button>
-            
-            
-            <div className="w-[800px] h-[600px] grid grid-cols-16 grid-rows-13 bg-parchment shadow-strongest border-gray-600 border-dotted border-4 p-2 gap-2">
+    
+            <div className="w-[800px] h-[600px] grid grid-cols-16 grid-rows-13 bg-parchment shadow-strongest border-gray-600 border-dotted border-4 p-2 gap-2 m-4">
             
                 <div className="col-start-1 col-end-5 row-start-1 row-end-3 justify-center items-center flex bg-secondary">
                     <form onSubmit={handleSubmit} id='name' className="h-max">
@@ -340,6 +256,8 @@ export default function Home() {
                 <div className="bg-secondary col-start-1 col-end-17 flex items-center justify-end text-blueNCS pr-3">created by dominic junik</div>
                 
             </div>
+
+            <button onClick={(()=>{dispatch(reset())})} className="flex bg-primary text-3xl m-4 rounded-md  shadow-pop-out p-2 text-orange-100 hover:bg-black hover:text-white hover:border-red-500 border-double border-4 border-slate-600 align-middle transform active:scale-90 transition-transform">reset</button>
            
             
             
